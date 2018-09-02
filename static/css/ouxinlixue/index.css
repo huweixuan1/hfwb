@@ -1,0 +1,226 @@
+html{
+
+width:100%;
+
+overflow-x:hidden;}
+*{margin: 0px;padding: 0px;}
+body{
+
+    background-color: #F8F8F8;font-size: 0.3rem;width: 100%;
+}
+.bule_font{color:#02BF7D;}
+.green_font{color: #2E8DED;}
+.header{width: 100%}
+.search{width:100%;color:white;height: 0.65rem;background-color:#02BF7D;line-height: 0.65rem;display: flex;flex-direction: row; justify-content: space-around}
+.search box{flex: 1;}
+.search .search_for{
+    /*margin-top: 0.1rem;*/
+    /*background-color: #CCF2E5;*/
+    /*border-radius: 0.45rem;*/
+    /*height: 0.45rem;*/
+    /*padding: 0 0.45rem;*/
+}
+.search .search_for input{
+    display: inline-block;
+    height: 0.45rem;
+    background-color: #CCF2E5;
+    margin-top: -0.1rem;
+    border: none;
+    border-radius: 0.45rem;
+    padding: 0 0.6rem 0 0.2rem;
+}
+.search .search_for input:after{
+    content: "搜索";
+    border: 1px solid red;
+    display: inline-block;
+    height: 0.45rem;
+    width: 0.45rem;
+    color: #000;
+    position: absolute;
+    left: 0;
+    top:0;
+}
+
+
+.rotations{
+
+
+    color: #ccc;
+}
+
+
+.display{
+    padding-left: 0.2rem;
+    height: 0.65rem;
+    border-bottom: 1px solid #E2E2E2;
+    background-color: white;
+    line-height: 0.65rem;
+    color: #666;
+
+}
+.display span{margin-left: 0.1rem;}
+.display span.d_s1{
+    margin-left: 0.2rem;
+}
+
+.nav ul{
+    height: 2.8rem;
+    border-bottom: 1px solid #E2E2E2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: white;
+}
+.nav ul li{
+
+    width: 1.1rem;
+
+    margin: 0.1rem 0rem 0rem 0.45rem;
+    height:1.2rem;
+    font-size: 0.23rem;
+    text-align: center;
+}
+.nav ul li a img{
+    text-align:center;width: 0.8rem;height: 0.8rem;
+}
+.c_adv{
+    height: 166px;
+}
+.contentt{
+
+}
+.contentt > div{
+    background-color: white;
+    margin-top: 20px;
+}
+.c_shop{
+    display: flex;
+    flex-direction: row;
+    height: 1.8rem;
+    background-color: #0e90d2;
+}
+.c_shop div{
+    flex: 1;
+}
+.c_shop .c_s_left{
+    border-right:1px solid #ccc ;
+}
+.c_shop div.c_s_right{
+    display: flex;
+    flex-direction: column;
+}
+.c_shop div.c_s_right div{
+    flex: 1;
+    position: relative;
+    border-bottom:1px solid #ccc ;
+
+
+}
+.c_shop div.c_s_right div p{
+    text-indent: 0.2rem;
+    line-height: 0.45rem;
+    font-size: 0.22rem;
+    color: #666;
+
+}
+.c_shop div.c_s_right div img{
+    position: absolute;
+    right:0.2rem;
+    top:0.2rem;
+    height:0.65rem;
+    width: 0.65rem;
+}
+
+
+
+.c_business{
+    height: 2.6rem;
+}
+.c_business div p.title{
+    height: 0.65rem;
+    line-height: 0.65rem;
+}
+.c_business ul {overflow:auto;height: 1.9rem;display: flex; flex-direction: row;}
+.c_business ul li{
+    margin-left: 0.11rem;
+
+}
+.c_business img{
+    width: 1.4rem;
+    height:1.4rem;
+    border-radius: 0.11rem;
+}
+.c_business ul li p{text-align: center}
+.c_adv img{height: 100%;width: 100%;}
+
+
+.c_meslist{
+    height: 6rem;
+}
+
+
+
+.c_meslist .c_m_nav{
+    height: 0.65rem;
+    line-height: 0.65rem;
+    border-bottom: 1px solid #ccc;
+}
+.c_meslist .c_m_nav ul{
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+}
+.c_meslist .c_m_nav ul li{
+    display: inline-block;
+    width: 2rem;
+    height: 0.45rem;
+}
+
+.c_meslist .c_m_nav ul li a{font-size: 0.3rem;}
+
+.c_meslist .c_m_cont ul.am-list li{ border-bottom: 1px solid #ccc;font-size: 0.3rem;background-color: white;word-break: break-all;line-height: 0.5rem;padding: 0.3rem 0;}
+.c_meslist .c_m_cont ul.am-list li div .pet_list_one_info{
+    height: 0.65rem;
+    line-height: 0.65rem;
+
+
+}
+.c_meslist .c_m_cont ul.am-list li div .pet_list_one_info img{height:0.65rem;width: 0.65rem;}
+.c_meslist .c_m_cont ul.am-list li div .l_content{margin-left: 0.65rem;}
+.c_meslist .c_m_cont ul.am-list li div .l_content .c_text .type{border: 1px solid #02BF7D;}
+.c_meslist .c_m_cont ul.am-list li div .l_content .tel a{display: inline-block;padding: 0.08rem 0.2rem;background-color: #02BF7D;border-radius: 0.08rem;color: white;}
+.c_meslist .c_m_cont ul.am-list li div .l_content p img{width: 1rem;height:1rem;}
+.layui-layer{font-size: 0.28rem;!important;}
+.layui-layer .layui-layer-title{font-size: 0.28rem;}
+.layui-layer .layui-layer-title .layui-layer-btn.layui-layer-btn- a.layui-layer-btn0{
+    height:0.35rem;
+}
+
+.c_content{background-color:#F8F8F8;font-size: 0.27rem}
+.c_content p{
+    margin: 0.01rem 0.11rem;
+}
+
+#cccc{
+    height:150px;
+    width: 100%;
+
+}
+.foot{
+    height:150px;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    position: fixed;
+    bottom: 0;
+    left:0;
+    background-color: white;
+}
+.foot ul{
+    display: flex;
+    flex-direction: row;
+}
+.foot ul li{
+    flex: 1;
+    text-align: center;
+}
+.foot ul li i{font-size: 80px;}

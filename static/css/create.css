@@ -1,0 +1,54 @@
+p{margin: 0px;padding: 0px;}
+.clearfix:after{display: block;clear: both;content:''}
+.topline ul{background-color: #02BF7D;height:40px;color: white;line-height: 40px;display: flex;}
+.topline ul li{width: 33.33333%;text-align: center;}
+
+.create_business{background-color: white;}
+.create_business ul{height: 100%;}
+.create_business ul li{height: 100%;}
+.create_business ul li{float: left;margin-left: 15px;}
+.create_business ul li p{height:35px; line-height:35px;margin: 0 0;}
+.create_business ul li p.l2{font-size: 14px;color: #F8F8F8;}
+
+.categories{width: 100%;}
+.categories p{margin: 0px;padding-left: 1rem;height:35px;line-height: 35px;font-size: 15px;color: #666666;}
+.categories .c_list{width: 100%;}
+.categories .c_list ul{width: 100%;}
+.c_list{}
+.c_list ul{display: flex;margin-bottom: 1px;}
+.c_list ul li{background-color: white;width: 25%;margin-right: 1px;height:80px;text-align: center;line-height: 80px;}
+
+.foot_link ul li.foot_link_list {height: 60%;}
+.sub_form{width: 100%}
+.sub_form p{width: 100%;background: white;margin-top: 3px;padding: 4px 8px;font-size: 14px;}
+.sub_form p textarea{height:10rem;width: 100%;border: none;}
+.sub_form p select{border: none;width: 100%;}
+.sub_form p select option{float:left;display: inline-block;border: 1px solid #ccc;padding: 3px 5px;border-radius: 4px;margin: 3px;}
+.sub_form p .file { position: relative;top:10px; display: inline-block; background: #D0EEFF; border: 1px solid #99D3F5; border-radius: 4px; padding: 4px 15px; overflow: hidden; color: #1E88C7; text-decoration: none; text-indent: 0; line-height: 20px; }
+.sub_form p .file input { position: absolute; font-size: 100px; right: 0; top: 0; opacity: 0; } .file:hover { background: #AADFFD; border-color: #78C3F3; color: #004974; text-decoration: none; }
+.file-list-dom img{width: 60px;height:60px;}
+
+
+div.pre-item {
+                    width: 60px;
+                    padding: 10px 0;
+                }
+                .pre-item {
+                    cursor: pointer;
+                    position: relative;
+                }
+                .pre-item:hover::after {
+                    content: '点击删除';
+                    padding: 10px 0px;
+                    border-radius: 5px;
+                    z-index: 1;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    cursor: pointer;
+                    width: 80%;
+                    text-align: center;
+                    background-color: rgba(0, 0, 0, .7);
+                    color: #FFF;
+                    transform: translate(-50%, -50%);
+                }

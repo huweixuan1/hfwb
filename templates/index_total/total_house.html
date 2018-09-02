@@ -1,0 +1,84 @@
+{% load staticfiles %}
+<li class="">
+<div class="layui-container">
+                                    <div class="pet_list_one_info">
+                                        <img src="{{ data.total.house.user.userinfo.headimgurl }}" alt="">
+                                        <span>{{ data.total.house.user.first_name }}</span>
+                                        <span>置顶</span>
+
+
+
+                                        <a href="/wechat/detail?id={{ data.total.id }}&img={{ data.total.house.user.userinfo.headimgurl }}&name={{ data.total.house.user.first_name }}&title={{ data.total.house.detail }}">详情 </a>
+
+
+
+                                    </div>
+
+
+                                    <div class="l_content">
+                                        <p class="c_text l_p" >
+
+
+
+                                                {% if data.total.house.type == '0' %}
+                                                    <span class="type bule_font">房屋出租</span>
+                                                    {% elif data.total.house.type == '1' %}
+                                                    <span class="type bule_font">房屋求租</span>
+                                                    {% elif data.total.house.type == '2' %}
+                                                    <span class="type bule_font">旺铺转让</span>
+                                                    {% elif data.total.house.type == '3' %}
+                                                    <span class="type bule_font">房屋出售</span>
+                                                    {% elif data.total.house.type == '4' %}
+                                                    <span class="type bule_font">房屋求购</span>
+
+                                                {% endif %}
+
+
+                                        </p>
+                                        {% if data.total.house.position %}
+                                            <p class="l_p">
+                                                <span class="bule_font">位置:</span><span>{{ data.total.house.position }}</span>
+                                            </p>
+                                        {% endif %}
+                                        {% if data.total.house.housetype %}
+                                            <p class="l_p">
+                                                <span class="bule_font">户型:</span><span>{{ data.total.house.housetype }}</span>
+                                            </p>
+                                        {% endif %}
+                                        {% if data.total.house.area %}
+                                            <p class="l_p">
+                                                <span class="bule_font">平方（m2）:</span><span>{{ data.total.house.area }}</span>
+                                            </p>
+                                        {% endif %}
+                                        {% if data.total.house.price %}
+                                            <p class="l_p">
+                                                <span class="bule_font">价格:</span><span>{{ data.total.house.price }}</span>
+                                            </p>
+                                        {% endif %}
+
+                                        <p class="c_text l_p" >
+                                            <span >{{ data.total.house.detail }}</span>
+                                        </p>
+                                        <p class="l_p">
+                                            <span class="bule_font">联系人:</span><span>{{ data.total.house.contact }}</span>
+                                        </p>
+
+                                        <p class="tel l_p" ><a href="tel:{{ data.total.house.tel }}">拨打电话</a></p>
+                                        <p class="l_p">
+                                            {% for img in data.img %}
+                                                {% if img %}
+
+                                                    <img src="{% static img %}" class="l_img" alt="" />
+                                                {% endif %}
+                                            {% endfor %}
+                                        </p>
+                                        <p class="l_p"><span>337浏览， </span><span>4分享， </span><span> {{ data.total.house.created|date:'m-d' }}发布</span></p>
+
+                                        <div class="com_reply">
+                                            {% include 'index_total/com_reply.html' %}
+                                        </div>
+                                    </div>
+
+
+</div>
+</li>

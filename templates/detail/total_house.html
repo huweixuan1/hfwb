@@ -1,0 +1,60 @@
+
+{% load staticfiles %}
+
+<p>{{ total.house.detail }}</p>
+
+<p class="" >
+    {% if total.house.type == '0' %}
+        <span class="bule_font">房屋出租</span>
+    {% elif total.house.type == '1' %}
+        <span class="bule_font">房屋求租</span>
+    {% elif total.house.type == '2' %}
+        <span class="bule_font">旺铺转让</span>
+    {% elif total.house.type == '3' %}
+        <span class="bule_font">房屋出售</span>
+    {% elif total.house.type == '4' %}
+        <span class="bule_font">房屋求购</span>
+    {% endif %}
+</p>
+
+
+{% if total.house.position %}
+    <p class="">
+        <span class="bule_font">位置:</span><span>{{ total.house.position }}</span>
+    </p>
+{% endif %}
+{% if total.house.housetype %}
+    <p class="">
+        <span class="bule_font">户型:</span><span>{{ total.house.housetype }}</span>
+    </p>
+{% endif %}
+{% if total.house.area %}
+    <p class="">
+        <span class="bule_font">平方（m2）:</span><span>{{ total.house.area }}</span>
+    </p>
+{% endif %}
+{% if total.house.price %}
+    <p class="">
+        <span class="bule_font">价格:</span><span>{{ total.house.price }}</span>
+    </p>
+{% endif %}
+
+
+<p class="">
+    <span class="bule_font">联系人:</span><span>{{ total.house.contact }}</span>
+</p>
+
+<p>联系我时，请说是在合肥微帮上看到的，谢谢</p>
+
+<p class="bac_blue" ><a href="tel:{{ total.house.tel }}">拨打电话</a></p>
+
+
+<p class="">
+    {% for im in img %}
+        <img src="{% static im %}" class="l_img" alt="" />
+    {% endfor %}
+</p>
+
+
+<p class=""><span>337浏览， </span><span>4分享， </span><span> {{ total.house.created|date:'m-d' }}发布</span></p>
+

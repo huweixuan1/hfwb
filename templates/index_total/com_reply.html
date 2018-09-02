@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<p onclick="com_function(this,{{ data.total.id }})" class="comment">
+    评论<i class="layui-icon layui-icon-reply-fill" style="font-size: 0.3rem; color: #1E9FFF;"></i>
+</p>
+    <div class="c_content">
+        {% for comment in data.comment %}
+            <p onclick="reply_function(this,{{ data.total.id }})"><span class="green_font">{{ comment.belong_user.first_name }}</span>：{{ comment.words }}</p>
+        {% endfor %}
+        {% for reply in data.reply %}
+            <p onclick="reply_function(this,{{ data.total.id }})"><span class="green_font">{{ reply.belong_user.first_name }}</span>回复 <span class="green_font">{{ reply.to_user.first_name }}</span>：{{ reply.words }}</p>
+        {% endfor %}
+    </div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/layer.js' %}"></script>
+<script>
+    function com_function(the,total_id) {
+            var index = layer.open({
+                type:1,
+                area:['4rem','2rem'],
+                title:'随便说点啥：',
+                content:"<textarea type='text' id = 'com' placeholder = '请输入文字' style = 'display:block;margin:0px 10px; height:1.2rem;font-size:0.3rem;'></textarea>",
+                btn:['确定','取消'],
+                yes:function (index,layero) {
+                    words = $('#com').val();
+                    $.ajax({
+                        url:"{% url 'wechat:comment' %}",
+                        type:"POST",
+                        data:{"total_id":total_id,"words":words},
+                        success:function (e) {
+                            if(e=="1"){
+                                parent.location.reload();
+                                layer.msg("good");
+                            }else {
+                                layer.msg("error")
+                            }
+                        },
+                    });
+                },
+            });
+        }
+        function reply_function(the,total_id) {
+            var to_user = $(the).children("span").eq(0).text();
+
+            var cc = layer.open({
+                type:1,
+                area:['4rem','2rem'],
+                title:'回复'+to_user,
+                content:'<textarea type = "text" id = "reply" placeholder = "请输入内容" style = "display:block;margin:0px 10px; height:1.2rem;font-size:0.3rem;"></textarea>',
+                btn:["确定","取消"],
+                yes:function (cc,layero) {
+                    words = $('#reply').val();
+                    $.ajax({
+                        url:"{% url 'wechat:reply' %}",
+                        type:"POST",
+                        data:{"total_id":total_id,"words":words,"to_user":to_user},
+                        success:function (e) {
+                            if(e=="1"){
+                                parent.location.reload();
+                                layer.msg("good");
+                            }else {
+                                layer.msg("error")
+                            }
+                        },
+                    });
+                },
+            })
+        }
+</script>

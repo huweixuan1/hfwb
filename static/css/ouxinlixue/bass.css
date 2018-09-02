@@ -1,0 +1,11 @@
+html{
+
+width:100%;
+
+overflow-x:hidden;}
+*{margin: 0px;padding: 0px;}
+body{
+
+    background-color: #F8F8F8;font-size: 0.3rem;width: 100%;
+}
+.bule_font{color:#02BF7D;}

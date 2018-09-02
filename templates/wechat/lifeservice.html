@@ -1,0 +1,70 @@
+{% extends 'wechat/basecre.html' %}
+{% load staticfiles %}
+{% block title %}
+
+发布{{ name }}信息
+{% endblock %}
+{% block top_name %}
+发布{{ name }}信息
+{% endblock %}
+{% block detail %}
+    <form  method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+            <div class="sub_form">
+
+                <p><textarea name="detail" cols="40" rows="10" required id="id_detail" placeholder="请输入详细信息"></textarea></p>
+
+                <p>
+                    <label for="id_img" >上传照片</label>
+                    <a href="javascript:;" class="file" >
+                        选择图片
+                        <input type="file" name="img" id="id_img" />
+                    </a>
+                </p>
+                <div class="file-list-dom"></div>
+
+                <p><label for="id_contact">联系人:</label> <input type="text" name="contact" maxlength="20" id="id_contact" /></p>
+                <p><label for="id_tel">电话号码:</label> <input type="text" name="tel" maxlength="20" required id="id_tel" /></p>
+
+
+
+
+
+
+
+            </div>
+        </form>
+    <div class="sub_form_same">
+                        <input class="submit" type="submit" value="确认发布" onclick="f_submit()">
+    </div>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/img_show.js' %}"></script>
+    <script>
+                function f_submit() {
+
+
+                    formData.append("detail", $("#id_detail").val());
+                    formData.append("contact", $("#id_contact").val());
+                    formData.append("tel", $("#id_tel").val());
+
+
+                    $.ajax({
+                        url: '{% url "wechat:lifeservice" id %}',
+                        type: 'POST',
+                        data: formData,
+                        {#dataType: 'JSON',#}
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success : function(e) {
+                            if(e=='1'){
+
+                                window.location.replace("{% url 'wechat:success' %}")
+                            }
+                        },
+                    });
+
+                };
+    </script>
+
+{% endblock %}

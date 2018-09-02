@@ -1,0 +1,98 @@
+{% extends 'wechat/basecre.html' %}
+{% load staticfiles %}
+{% block title %}
+
+发布{{ name }}信息
+{% endblock %}
+{% block top_name %}
+发布{{ name }}信息
+{% endblock %}
+{% block detail %}
+    <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+            <div class="sub_form">
+
+
+                <p><label for="id_position">位置:</label> <input type="text" name="position" maxlength="50" id="id_position" /></p>
+                <p><label for="id_housetype">户型:</label> <input type="text" name="housetype" maxlength="50" id="id_housetype" /></p>
+                <p><label for="id_area">面积:</label> <input type="text" name="area" maxlength="20" id="id_area" /></p>
+                <p><label for="id_price">价格:</label> <input type="text" name="price" maxlength="20" id="id_price" /></p>
+                <p><textarea name="detail" cols="40" rows="10" required id="id_detail" placeholder="请输入详细信息"></textarea></p>
+                <p><label for="id_img" >上传照片</label> <a href="javascript:;" class="file" >选择图片<input type="file" name="img" id="id_img" /></a></p>
+                <div class="file-list-dom"></div>
+                <p>
+
+                    <select name="tag" id="id_tag" multiple="multiple">
+                          <option value="1">合租</option>
+
+                          <option value="2">整租</option>
+
+                          <option value="3">随时看房</option>
+
+                          <option value="4">交通便利</option>
+
+                          <option value="5">带车位</option>
+
+                          <option value="6">靠近医院</option>
+
+                          <option value="7">带电梯</option>
+
+                        </select>
+                </p>
+                <p><label for="id_contact">联系人:</label> <input type="text" name="contact" maxlength="20" required id="id_contact" /></p>
+                <p><label for="id_tel">联系电话:</label> <input type="text" name="tel" maxlength="20" required id="id_tel" /></p>
+
+
+
+
+
+            </div>
+        </form>
+                <div class="sub_form_same">
+                        <input class="submit" type="submit" value="确认发布" onclick="f_submit()">
+                </div>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/img_show.js' %}"></script>
+    <script>
+                function f_submit() {
+
+                    formData.append("position", $("#id_position").val());
+                    formData.append("housetype", $("#id_housetype").val());
+                    formData.append("area", $("#id_area").val());
+                    formData.append("price", $("#id_price").val());
+                    var list = $("#id_tag").val()
+
+                    for(i=0;i<list.length-1;i++){
+
+                        formData.append("tag",list[i]);
+                    };
+
+
+
+
+                    formData.append("detail", $("#id_detail").val());
+                    formData.append("contact", $("#id_contact").val());
+                    formData.append("tel", $("#id_tel").val());
+
+
+                    $.ajax({
+                        url: '{% url "wechat:house" id %}',
+                        type: 'POST',
+                        data: formData,
+                        {#dataType: 'JSON',#}
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success : function(e) {
+                            if(e=='1'){
+
+                                window.location.replace("{% url 'wechat:success' %}")
+                            }
+                        },
+                    });
+
+                };
+    </script>
+
+{% endblock %}

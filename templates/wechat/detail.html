@@ -1,0 +1,75 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ouxinlixue/detail.css' %}">
+</head>
+<body>
+<script src="{% static 'js/zishiying.js' %}"></script>
+
+<div class="header">{{ title }}</div>
+
+<div class="content">
+    <div class="c_user layui-container">
+        <div class="c_u_img">
+            <img src="{{ userimg }}" alt="">
+        </div>
+        <div class="c_u_p">
+            <p>{{ name }}</p>
+            <p class="p2">半小时前 发布</p>
+        </div>
+    </div>
+    <div class="c_con layui-container">
+
+                                        {% if total.job %}
+                                           {% include 'detail/total_job.html' %}
+                                    {% elif total.house %}
+                                              {% include 'detail/total_house.html' %}
+                                    {% elif total.look_help %}
+                                         {% include 'detail/total_lookhelp.html' %}
+                                    {% elif total.eme_help %}
+                                        {% include 'detail/total_emehelp.html' %}
+                                    {% elif total.life_ser %}
+                                       {% include 'detail/total_lifeser.html' %}
+                                    {% elif total.old_item %}
+                                        {% include 'detail/total_olditem.html' %}
+                                    {% elif total.old_car %}
+                                       {% include 'detail/total_oldcar.html' %}
+                                    {% elif total.car_pool %}
+                                        {% include 'detail/total_carpool.html' %}
+                                    {% endif %}
+    </div>
+<div id="cccc">
+
+            </div>
+</div>
+<div class="foot">
+    <div class="f_left">
+        <div class="home">
+            <a href="{% url 'home' %}">
+                <i class="layui-icon layui-icon-home" ></i>
+                首页
+            </a>
+
+        </div>
+        <div class="home">
+            <a href="{% url 'create' %}">
+                <i class="layui-icon layui-icon-release" ></i>
+            发布
+            </a>
+
+        </div>
+
+    </div>
+    <div class="f_right">
+        <div class="r_mes">短信</div>
+        <div class="r_phone">拨打电话</div>
+    </div>
+
+</div>
+
+</body>
+</html>

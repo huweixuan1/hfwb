@@ -1,0 +1,52 @@
+html{
+
+width:100%;
+
+overflow-x:hidden;}
+*{margin: 0px;padding: 0px;}
+body{
+
+    background-color: #F8F8F8;font-size: 0.3rem;width: 100%;
+}
+.bule_font{color:#02BF7D;}
+.b_con .cam_my{
+	background-color: #02BF7D;
+	height:2rem;
+	text-align: center;
+	padding-top: 0.5rem;
+	color: white;
+	position: relative;
+}
+.b_con .cam_my .my_img img{
+	border-radius: 50%;
+	width: 0.85rem;
+	height: 0.85rem;
+	overflow: hidden;
+	border: 3px solid white;
+	margin-bottom: 0.2rem;
+}
+.b_con .cam_my .notice{
+	font-size: 0.27rem;
+	background-color: white;
+	line-height: 0.65rem;
+	position: absolute;
+	bottom: -0.325rem;
+	left: 50%;
+	margin-left: -40%;
+
+	word-break: break-all;
+	width: 80%;
+	color: #666;
+	border-radius: 0.12rem;
+}
+.detail{
+	margin-top: 0.65rem;
+}
+
+.detail ul li{
+	background-color: white;
+	line-height: 1.2rem;
+	text-indent: 0.25rem;
+	margin-bottom: 0.04rem;
+}
+

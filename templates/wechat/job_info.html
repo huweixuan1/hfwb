@@ -1,0 +1,97 @@
+{% extends 'wechat/basecre.html' %}
+{% load staticfiles %}
+{% block title %}
+
+发布合肥{{ name }}信息
+{% endblock %}
+{% block top_name %}
+发布合肥{{ name }}信息
+{% endblock %}
+{% block detail %}
+    <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+            <div class="sub_form">
+
+{#                {{ job_info_form.as_p }}#}
+
+
+
+{#            <p><label for="id_type">Type:</label> <input type="number" name="type" value="0" id="id_type" /></p>#}
+            <p><textarea name="content" cols="40" rows="10" required id="id_content" placeholder="请输入详细信息" ></textarea></p>
+
+            <p><label for="id_img" >上传照片</label> <a href="javascript:;" class="file" >选择图片<input type="file" name="img" id="id_img" /></a></p>
+                <div class="file-list-dom"></div>
+            <p>
+
+                <select name="requre" id="id_requre" multiple="multiple">
+                          <option value="1">有责任心</option>
+
+                          <option value="2">能吃苦</option>
+
+                          <option value="3">学习能力强</option>
+
+                          <option value="4">及时到岗</option>
+
+                          <option value="5">执行力强</option>
+
+                          <option value="6">包吃</option>
+
+                          <option value="7">双休</option>
+
+                          <option value="8">交通补助</option>
+
+                          <option value="9">加班补助</option>
+
+                        </select></p>
+                <p><label for="id_contact">联系人:</label> <input type="text" name="contact" maxlength="20" required id="id_contact" /></p>
+                <p><label for="id_tel">电话号码:</label> <input type="text" name="tel" maxlength="20" required id="id_tel" /></p>
+
+            </div>
+        </form>
+    <div class="sub_form_same">
+                        <input class="submit" type="submit" value="确认发布" onclick="f_submit()">
+                </div>
+
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/img_show.js' %}"></script>
+    <script>
+                function f_submit() {
+
+                    formData.append("content", $("#id_content").val());
+
+                    var list = $("#id_requre").val()
+
+                    for(i=0;i<list.length-1;i++){
+
+                        formData.append("requre",list[i]);
+                    };
+
+
+
+
+
+                    formData.append("contact", $("#id_contact").val());
+                    formData.append("tel", $("#id_tel").val());
+
+
+                    $.ajax({
+                        url: '{% url "wechat:job" id %}',
+                        type: 'POST',
+                        data: formData,
+                        {#dataType: 'JSON',#}
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success : function(e) {
+                            if(e=='1'){
+
+                                window.location.replace("{% url 'wechat:success' %}")
+                            }
+                        },
+                    });
+
+                };
+    </script>
+
+{% endblock %}

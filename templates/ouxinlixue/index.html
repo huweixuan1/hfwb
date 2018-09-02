@@ -1,0 +1,349 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>合肥人一直在使用，你不试试？</title>
+    <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ouxinlixue/index.css' %}">
+
+</head>
+<body>
+<script src="{% static 'js/zishiying.js' %}"></script>
+{#头部开始#}
+    <div class="header">
+
+{#        搜索开始#}
+            <div class="search">
+                <div>合肥微帮</div>
+                <div class="search_for">
+                    <input  type="text" placeholder="找工作、找顺风车、找房子">
+                    <span>搜索</span>
+                </div>
+            </div>
+
+{#        轮播开始#}
+            <div class="rotations">
+                <div class="layui-carousel r_test"  >
+                      <div carousel-item>
+                        <div style=""><img src="{% static 'img/nav.png' %}" style="width: 100%;height: 100%;" alt=""></div>
+                        <div style=""><img src="{% static 'img/nav.png' %}" style="width: 100%;height: 100%;" alt=""></div>
+                        
+                      </div>
+                </div>
+
+
+            </div>
+{#        数据展示#}
+            <div class="display">
+                <i class="layui-icon layui-icon-speaker d_s1" style="font-size: 0.40rem; color: #FF6565;"></i>
+                <span class="">浏览：<span class="bule_font">6584万</span></span>
+                <span>发布：<span class="bule_font">4.8万</span></span>
+                <span>分享： <span class="bule_font">6.4万</span></span>
+
+            </div>
+
+{#        导航#}
+            <div class="nav">
+                <ul>
+                    <li>
+						<a href="{% url 'create' %}" class="iconfont ">
+                            <img src="{% static 'img/list/1.png' %}"  alt="">
+                            <p>求职招聘</p>
+                        </a>
+
+                    </li>
+					<li>
+						<a href="{% url 'create' %}" class="iconfont "><img src="{% static 'img/list/2.png' %}"  alt=""></a>
+                        <p>顺风拼车</p>
+                    </li>
+					<li>
+						<a href="{% url 'create' %}" class="iconfont  "><img src="{% static 'img/list/3.png' %}"  alt=""></a>
+                        <p>二手市场</p>
+                       </li>
+					<li>
+						<a href="{% url 'create' %}" class="iconfont  "><img src="{% static 'img/list/5.png' %}" alt=""></a>
+                        <p>房屋租售</p>
+                       </li>
+					<li>
+						<a href="{% url 'create' %}" class="iconfont  "><img src="{% static 'img/list/6.png' %}"  alt=""></a>
+                        <p>生活服务</p>
+                        </li>
+					<li>
+						<a href="{% url 'create' %}" class="iconfont  "><img src="{% static 'img/list/7.png' %}"  alt=""></a>
+                        <p>紧急求助</p>
+                        </li>
+					<li>
+						<a href="{% url 'create' %}" class="iconfont  "><img src="{% static 'img/list/7.png' %}"  alt=""></a>
+                        <p>寻人寻物</p>
+                        </li>
+
+                </ul>
+
+            </div>
+{#        公告#}
+            <div class="notice display">
+                <span class="bule_font">微帮头条</span>
+                <span>[8-15]啦啦啦啦啦啦</span>
+
+            </div>
+    </div>
+
+
+
+
+{#内容开始#}
+    <div class="contentt">
+
+{#        商圈入驻，限时抢购#}
+            <div class="c_shop">
+                <div class="c_s_left" >
+                    <img src="{% static 'img/sucai/d3.png' %}" style="width: 100%;height: 100%;" alt="">
+                </div>
+                <div class="c_s_right">
+                    <div class="c_s_r_top">
+
+                            <p>商圈入驻</p>
+                            <p>海量佣金等你拿</p>
+
+                        <img src="{% static 'img/sucai/d1.png' %}"  alt="">
+                    </div>
+                    <div class="c_s_r_bot">
+
+                            <p>优惠券</p>
+                            <p>美食优惠立即领</p>
+
+
+                        <img src="{% static 'img/sucai/d2.png' %}"  alt="">
+                    </div>
+                </div>
+            </div>
+
+{#        热门商家#}
+            <div class="c_business">
+                <div class="layui-container">
+                    <p class="title">热门商家</p>
+                </div>
+                <ul>
+                    <li>
+                        <img src="{% static 'img/busness/1.jpg' %}" alt="">
+                        <p>山水人家</p>
+                    </li>
+                    <li>
+                        <img src="{% static 'img/busness/1.jpg' %}" alt="">
+                        <p>山水人家</p>
+                    </li>
+                    <li>
+                        <img src="{% static 'img/busness/1.jpg' %}" alt="">
+                        <p>山水人家</p>
+                    </li>
+                    <li>
+                        <img src="{% static 'img/busness/1.jpg' %}" alt="">
+                        <p>山水人家</p>
+                    </li>
+                    <li>
+                        <img src="{% static 'img/busness/1.jpg' %}" alt="">
+                        <p>山水人家</p>
+                    </li>
+                    <li>
+                        <img src="{% static 'img/busness/1.jpg' %}" alt="">
+                        <p>山水人家</p>
+                    </li>
+                </ul>
+            </div>
+
+{#            广告轮播        #}
+            <div class="c_adv">
+                <div class="layui-carousel c_a_list"  >
+                      <div carousel-item>
+                        <div >
+                            <img src="{% static 'img/sucai/d4.png' %}" alt="">
+                        </div>
+                          <div >
+                            <img src="{% static 'img/sucai/d4.png' %}" alt="">
+                        </div>
+                        
+                      </div>
+                </div>
+            </div>
+
+{#        内容详情#}
+            <div class="c_meslist">
+                <div class="c_m_nav">
+                    <ul class="layui-nav layui-bg-blue "  lay-filter="">
+                              <li class="layui-nav-item layui-this" onclick="fun_ajax(this)" att="0"><a href="javascript:">最新发布</a> </li>
+                              <li class="layui-nav-item " onclick="fun_ajax(this)" att="1"><a href="javascript:">求职招聘</a></li>
+                              <li class="layui-nav-item" onclick="fun_ajax(this)" att="2"><a href="javascript:">顺风拼车</a></li>
+                              <li class="layui-nav-item" onclick="fun_ajax(this)" att="3">
+                                <a href="javascript:">二手市场</a>
+                              </li>
+                              <li class="layui-nav-item" onclick="fun_ajax(this)" att="4"> <a href="javascript:">房屋租售</a></li>
+                                <li class="layui-nav-item" onclick="fun_ajax(this)" att="5"><a href="javascript:">生活服务</a></li>
+                                <li class="layui-nav-item" onclick="fun_ajax(this)" att="6"><a href="javascript:">紧急求助</a></li>
+                                <li class="layui-nav-item" onclick="fun_ajax(this)" att="7"><a href="javascript:">寻人寻物</a></li>
+                            </ul>
+                </div>
+                <div class="c_m_cont">
+
+                        <ul class="am-list" id="demo">
+                                <!--缩略图在标题右边-->
+
+
+{#                            循环遍历data里面的内容（内容已经根据更新时间进行排序）#}
+
+                                {% for data in datas %}
+
+                                    {#                                    判断每一个total的类型，根据不同的类型，渲染不同的模板 模板放在index_total文件下面#}
+{#                                    求职招聘模板渲染#}
+
+                                    {% if data.total.job %}
+                                        <div class="con_list l0" >
+                                           {% include 'index_total/total_job.html' %}
+                                    </div>
+
+
+{#                                    房屋租售模板渲染    #}
+
+                                    {% elif data.total.house %}
+
+                                          <div class="con_list l1" >
+                                              {% include 'index_total/total_house.html' %}
+                                    </div>
+
+
+
+                                    {% elif data.total.look_help %}
+                                        <div class="con_list l2" > {% include 'index_total/total_lookhelp.html' %}</div>
+
+
+
+                                    {% elif data.total.eme_help %}
+
+                                        <div class="con_list l3" >{% include 'index_total/total_emehelp.html' %}</div>
+
+                                    {% elif data.total.life_ser %}
+                                       <div class="con_list l4" > {% include 'index_total/total_lifeser.html' %}</div>
+
+                                    {% elif data.total.old_item %}
+                                        <div class="con_list l5" >{% include 'index_total/total_olditem.html' %}</div>
+
+                                    {% elif data.total.old_car %}
+                                       <div class="con_list l6" > {% include 'index_total/total_oldcar.html' %}</div>
+
+                                    {% elif data.total.car_pool %}
+                                        <div class="con_list l7" >{% include 'index_total/total_carpool.html' %}</div>
+                                    {% endif %}
+
+                                {% endfor %}
+                            </ul>
+                <div id="cccc">
+
+            </div>
+                </div>
+
+
+            </div>
+
+
+    </div>
+
+
+{#底部导航#}
+    <div class="foot">
+        {% include 'footer.html' %}
+    </div>
+
+<script src="{% static 'layui/layui.js' %}"></script>
+<script>
+layui.use('carousel', function(){
+  var carousel = layui.carousel;
+  //建造实例
+  carousel.render({
+    elem: '.r_test',
+      width: '100%', //设置容器宽度
+      arrow: 'hover', //始终显示箭头
+      height:'350px'
+    //,anim: 'updown' //切换动画方式
+  });
+
+});
+layui.use('carousel', function(){
+  var carousel = layui.carousel;
+
+  carousel.render({
+    elem: '.c_a_list',
+      width: '100%', //设置容器宽度
+      arrow: 'hover', //始终显示箭头
+      height:'160px',
+
+    //,anim: 'updown' //切换动画方式
+  });
+});
+
+layui.use('element', function(){
+  var element = layui.element;
+
+  //…
+});
+layui.use('flow', function(){
+  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+  var flow = layui.flow;
+  flow.load({
+    elem: '#demo' //指定列表容器
+    ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+      var lis = [];
+      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+      $.get('/api/list?page='+page, function(res){
+        //假设你的列表返回在data集合中
+        layui.each(res.data, function(index, item){
+          lis.push('<li>'+ item.title +'</li>');
+        });
+
+        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+        //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+        next(lis.join(''), page < res.pages);
+      });
+    }
+  });
+});
+
+function fun_ajax(the) {
+    var id = $(the).attr('att');
+    if(id!='0'){
+        $(".con_list li").attr("style",'display:none');
+        if(id=='1'){
+            $(".l0 li").attr("style",'display:block');
+        }
+        else if(id=='2'){
+            $(".l7 li").attr("style",'display:block');
+        }
+        else if(id=='3'){
+            $(".l5 li").attr("style",'display:block');
+            $(".l6 li").attr("style",'display:block');
+        }
+        else if(id=='4'){
+            $(".l1 li").attr("style",'display:block');
+        }
+        else if(id=='5'){
+            $(".l4 li").attr("style",'display:block');
+        }
+        else if(id=='6'){
+            $(".l3 li").attr("style",'display:block');
+        }
+        else if(id=='7'){
+            $(".l2 li").attr("style",'display:block');
+        }
+
+
+    }else {
+        $(".con_list li").attr("style",'display:block');
+    }
+}
+
+
+</script>
+
+
+</body>
+</html>

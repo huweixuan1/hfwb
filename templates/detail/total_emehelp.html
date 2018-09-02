@@ -1,0 +1,19 @@
+
+{% load staticfiles %}
+
+<p>{{ total.eme_help.detail }}</p>
+<p><span class="bule_font">紧急求助</span></p>
+
+<p class="">
+    <span class="bule_font">联系人:</span><span>{{ total.eme_help.contact }}</span>
+</p>
+<p>联系我时，请说是在合肥微帮上看到的，谢谢</p>
+<p class="bac_blue" ><a href="tel:{{ total.eme_help.tel }}">拨打电话</a></p>
+<p class="">
+    {% for im in img %}
+        <img src="{% static im %}" class="l_img" alt="" />
+    {% endfor %}
+</p>
+<p class=""><span>337浏览， </span><span>4分享， </span><span> {{ total.eme_help.created|date:'m-d' }}发布</span></p>
+
+

@@ -1,0 +1,19 @@
+.bule_font{color:#02BF7D;}
+.foot{
+    height:50px;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    position: fixed;
+    bottom: 0;
+    left:0;
+    background-color: white;
+}
+.foot ul{
+    display: flex;
+    flex-direction: row;
+}
+.foot ul li{
+    flex: 1;
+    text-align: center;
+}
+.foot ul li i{font-size: 27px;}

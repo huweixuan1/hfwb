@@ -1,0 +1,48 @@
+{% load staticfiles %}
+
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link rel="stylesheet" href="{% static 'css/amazeui.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/wap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/create.css' %}">
+        <link rel="stylesheet" href="{% static 'css/job.css' %}">
+
+		<title>{% block title %}
+
+		{% endblock %}</title>
+	</head>
+	<body>
+		<div class="topline">
+            <ul>
+                <li class=""></li>
+                <li>
+                    {% block top_name %}
+
+                    {% endblock %}
+                </li>
+                <li>帮助</li>
+            </ul>
+        </div>
+        <div class="statement">
+            <span>免责申明：本平台发布的所有信息（收费，免费）；平台只负责发布、展示，与平台本身无关，平台不负任何责任。
+            </span><br><span>本分类免费发布！有效期：7天</span>
+
+        </div>
+
+
+        {% block detail %}
+
+        {% endblock %}
+
+
+
+
+	</body>
+
+</html>

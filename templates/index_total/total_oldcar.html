@@ -1,0 +1,81 @@
+{% load staticfiles %}
+
+                    <li class="">
+                         <div class="layui-container">
+
+                             <div class="pet_list_one_info">
+
+                                 <img src="{{ data.total.old_car.user.userinfo.headimgurl }}" alt="">
+                                     <span>{{ data.total.old_car.user.first_name }}</span>
+                                     <span>置顶</span>
+
+
+
+                                 <a href="/wechat/detail?id={{ data.total.id }}&img={{ data.total.car_pool.user.userinfo.headimgurl }}&name={{ data.total.car_pool.user.first_name }}&title={{ data.total.old_car.detail }}">详情 </a>
+
+
+                                    </div>
+
+
+                                    <div class=" l_content" >
+                                        <div class="text lala" >
+                                            <p class="c_text l_p" >
+
+                                                    <span class="type bule_font">二手车辆</span>
+
+
+
+
+
+
+                                            </p>
+                                            <p class="l_p">
+                                                <span class="bule_font">品牌:</span><span>{{ data.total.old_car.brand }}</span>
+                                            </p>
+                                            <p class="l_p">
+                                                <span class="bule_font">车系:</span><span>{{ data.total.old_car.carsystem }}</span>
+                                            </p>
+                                            <p class="l_p">
+                                                <span class="bule_font">车型:</span><span>{{ data.total.old_car.carmodel }}</span>
+                                            </p>
+                                            <p class="l_p">
+                                                <span class="bule_font">车龄:</span><span>{{ data.total.old_car.car_age }}</span>
+                                            </p>
+                                            <p class="l_p">
+                                                <span class="bule_font">行驶公里:</span><span>{{ data.total.old_car.distance }}</span>
+                                            </p>
+                                            <p class="l_p">
+                                                <span class="bule_font">价格:</span><span>{{ data.total.old_car.price }}</span>
+                                            </p>
+                                            <p class="l_p">
+                                                <span class="bule_font">详情:</span><span >{{ data.total.old_car.detail }}</span>
+                                            </p>
+                                            <p class="l_p">
+                                                <span class="bule_font">联系人:</span><span>{{ data.total.old_car.contact }}</span>
+                                            </p>
+
+                                            <p class="tel l_p" ><a href="tel:{{ data.total.old_car.tel }}">拨打电话</a></p>
+                                        </div>
+                                        <p onclick="text1(this)" style="margin: 0px;color:green;">全文</p>
+                                        <script>
+                                            function text1(the) {
+                                                $(the).hide();
+                                                $('.lala').removeClass()
+
+
+                                            }
+                                        </script>
+                                        <p class="l_p">{% for img in data.img %}
+                                                <img src="{% static img %}" class="l_img" alt="" />
+                                            {% empty %}
+                                            {% endfor %}</p>
+
+
+                                        <p class="l_p l_bottom"><span>337浏览， </span><span>4分享， </span><span> {{ data.total.old_car.created|date:'m-d' }}发布</span></p>
+                                        <div class="com_reply">
+                                            {% include 'index_total/com_reply.html' %}
+                                        </div>
+
+                                    </div>
+</div>
+                                </li>

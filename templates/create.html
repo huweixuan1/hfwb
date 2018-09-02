@@ -1,0 +1,206 @@
+{% load staticfiles %}
+
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link rel="stylesheet" href="{% static 'css/amazeui.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/wap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/create.css' %}">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
+        <link rel="stylesheet" href="{% static 'css/ouxinlixue/footcreat.css' %}">
+
+		<title>发布消息</title>
+	</head>
+	<body>
+		<div class="topline">
+            <ul>
+                <li class=""></li>
+                <li>发布消息</li>
+                <li>帮助</li>
+            </ul>
+        </div>
+        <div class="statement">
+            <p>免责申明：本平台发布的所有信息（收费，免费）；平台只负责发布、展示，与平台本身无关，平台不负任何责任。</p>
+        </div>
+        <div class="create_business clearfix">
+            <ul>
+                <li>图片</li>
+                <li>
+                    <p>我是商家，点击入驻商圈</p>
+                    <p class="">超低成本，本地宣传，简单有效，方便快捷！</p>
+                </li>
+            </ul>
+
+        </div>
+        <div class="categories">
+            <p class="title ">请选择发布类别</p>
+            <div class="c_list">
+                <ul>
+                    <li class="pet_nav_gengduo l1">求职招聘</li>
+                    <li class="pet_nav_gengduo l2">顺风拼车</li>
+                    <li class="pet_nav_gengduo l3">二手市场</li>
+                    <li class="pet_nav_gengduo l4">房屋租售</li>
+
+                </ul>
+                <ul>
+
+                    <li class="pet_nav_gengduo l5">生活服务</li>
+                    <li class="pet_nav_gengduo l6"><a href="wechat/emergencyhelp" style="color: black">紧急求助</a></li>
+                    <li class="pet_nav_gengduo l7"><a href="wechat/lookforhelp" style="color: black">寻人寻物</a></li>
+                    <li class="pet_nav_gengduo"></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="foot_link">
+            <ul>
+                <li class="pet_more_list foot_link_list list1">
+                    <div class="pet_more_list_block">
+                        <div class="iconfont pet_more_close">×</div>
+                        <p>发布求职招聘</p>
+                        <p><a href="wechat/job/0">合肥求职</a></p>
+                        <p><a href="wechat/job/1">合肥招聘</a></p>
+                    </div>
+                </li>
+
+
+
+
+                <li class="pet_more_list foot_link_list list2">
+                    <div class="pet_more_list_block">
+                        <div class="iconfont pet_more_close">×</div>
+                        <p>发布顺风拼车</p>
+                        <p><a href="wechat/carpool/0">人找车</a></p>
+                        <p><a href="wechat/carpool/1">车找人</a></p>
+                    </div>
+                </li>
+
+
+
+                <li class="pet_more_list foot_link_list list3">
+                    <div class="pet_more_list_block">
+                        <div class="iconfont pet_more_close">×</div>
+                        <p>发布二手市场</p>
+                        <p><a href="wechat/oldcar">二手车辆</a></p>
+                        <p><a href="wechat/olditem">二手物品</a></p>
+                    </div>
+                </li>
+
+
+
+                <li class="pet_more_list foot_link_list list4">
+                    <div class="pet_more_list_block">
+                        <div class="iconfont pet_more_close">×</div>
+                        <p>发布房屋租售</p>
+                        <p><a href="wechat/house/0">房屋出租</a></p>
+
+                        <p><a href="wechat/house/1">房屋求租</a></p>
+                        <p><a href="wechat/house/2">旺铺转让</a></p>
+                        <p><a href="wechat/house/3">房屋出售</a></p>
+                        <p><a href="wechat/house/4">房屋求购</a></p>
+                    </div>
+                </li>
+
+
+
+                <li class="pet_more_list foot_link_list list5">
+                    <div class="pet_more_list_block">
+                        <div class="iconfont pet_more_close">×</div>
+                        <p>发布生活服务</p>
+                        <p><a href="wechat/lifeservice/0">求购</a></p>
+                        <p><a href="wechat/lifeservice/1">求租</a></p>
+                        <p><a href="wechat/lifeservice/2">出租</a></p>
+                        <p><a href="wechat/lifeservice/3">出售</a></p>
+
+
+                    </div>
+                </li>
+
+
+
+
+            </ul>
+        </div>
+
+
+
+<div class="foot">{% include 'foot2.html' %}</div>
+
+
+
+
+
+
+
+
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+			<script src="{% static 'js/amazeui.min.js' %}"></script>
+			<script>
+				$(function() {
+
+					// 动态计算新闻列表文字样式
+					auto_resize();
+					$(window).resize(function() {
+						auto_resize();
+					});
+					$('.am-list-thumb img').load(function() {
+						auto_resize();
+					});
+
+					$('.am-list > li:last-child').css('border', 'none');
+
+					function auto_resize() {
+						$('.pet_list_one_nr').height($('.pet_list_one_img').height());
+
+					}
+
+					$('.l1').on('click', function() {
+						$('.list1').addClass('pet_more_list_show');
+					});
+					$('.l2').on('click', function() {
+						$('.list2').addClass('pet_more_list_show');
+					});
+
+					$('.l3').on('click', function() {
+						$('.list3').addClass('pet_more_list_show');
+					});
+					$('.l4').on('click', function() {
+						$('.list4').addClass('pet_more_list_show');
+					});
+					$('.l5').on('click', function() {
+						$('.list5').addClass('pet_more_list_show');
+					});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					$('.pet_more_close').on('click', function() {
+						$('.foot_link_list').removeClass('pet_more_list_show');
+					});
+				});
+			</script>
+	</body>
+
+</html>

@@ -1,0 +1,43 @@
+
+{% load staticfiles %}
+
+<p>{{ total.old_car.detail }}</p>
+<p>
+ <span class="bule_font">二手车辆</span>
+</p>
+
+
+<p class="">
+    <span class="bule_font">品牌:</span><span>{{ total.old_car.brand }}</span>
+</p>
+<p class="">
+    <span class="bule_font">车系:</span><span>{{ total.old_car.carsystem }}</span>
+</p>
+<p class="">
+    <span class="bule_font">车型:</span><span>{{ total.old_car.carmodel }}</span>
+</p>
+<p class="">
+    <span class="bule_font">车龄:</span><span>{{ total.old_car.car_age }}</span>
+</p>
+<p class="">
+    <span class="bule_font">行驶公里:</span><span>{{ total.old_car.distance }}</span>
+</p>
+<p class="">
+    <span class="bule_font">价格:</span><span>{{ total.old_car.price }}</span>
+</p>
+
+<p class="">
+    <span class="bule_font">联系人:</span><span>{{ total.old_car.contact }}</span>
+</p>
+<p>联系我时，请说是在合肥微帮上看到的，谢谢</p>
+
+<p class="bac_blue" ><a href="tel:{{ total.old_car.tel }}">拨打电话</a></p>
+<p class="">
+    {% for im in img %}
+        <img src="{% static im %}" class="l_img" alt="" />
+    {% endfor %}
+</p>
+<p class=""><span>337浏览， </span><span>4分享， </span><span> {{ total.old_car.created|date:'m-d' }}发布</span></p>
+
+
+

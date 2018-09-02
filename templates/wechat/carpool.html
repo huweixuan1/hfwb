@@ -1,0 +1,104 @@
+{% extends 'wechat/basecre.html' %}
+{% load staticfiles %}
+{% block title %}
+
+发布{{ name }}信息
+{% endblock %}
+{% block top_name %}
+发布{{ name }}信息
+{% endblock %}
+{% block detail %}
+    <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+            <div class="sub_form">
+
+
+                <p><label for="id_beginning">出发地:</label> <input type="text" name="beginning" maxlength="30" id="id_beginning" placeholder="出发地"/></p>
+                <p><label for="id_destination">目的地:</label> <input type="text" name="destination" maxlength="30" id="id_destination" placeholder="目的地"/></p>
+                <p><label for="id_begin_time">出发时间:</label> <input type="text" name="begin_time" maxlength="20" id="id_begin_time" placeholder="出发时间"/></p>
+                {% if name == "车找人" %}
+                <p><label for="id_seat">空位:</label> <input type="text" name="seat" maxlength="10" id="id_seat" placeholder="空位"/></p>
+                {% endif %}
+
+                <p><label for="id_isfee">收费/免费:</label> <input type="text" name="isfee" maxlength="10" id="id_isfee" placeholder="收费/免费"/></p>
+                <p><textarea name="detail" cols="40" rows="10" required id="id_detail" placeholder="请输入详细信息"></textarea></p>
+                <p><label for="id_img" >上传照片</label> <a href="javascript:;" class="file" >选择图片<input type="file" name="img" id="id_img" /></a></p>
+                <div class="file-list-dom"></div>
+
+                <p>
+
+                    <select name="tag" id="id_tag" multiple="multiple">
+                              <option value="1">安全第一</option>
+
+                              <option value="2">需走高速</option>
+
+                              <option value="3">货物代运</option>
+
+                              <option value="4">有儿童</option>
+
+                              <option value="5">按时发车</option>
+
+                              <option value="6">有空调</option>
+
+                              <option value="7">男女不限</option>
+
+                            </select>
+                </p>
+                <p><label for="id_contact">联系人:</label> <input type="text" name="contact" maxlength="20" required id="id_contact" placeholder="请填写联系人姓名"/></p>
+                <p><label for="id_tel">电话号码:</label> <input type="text" name="tel" maxlength="20" required id="id_tel" placeholder="请填写联系人电话号码"/></p>
+
+
+
+
+
+            </div>
+        </form>
+    <div class="sub_form_same">
+                        <input class="submit" type="submit" value="确认发布" onclick="f_submit()">
+                </div>
+
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/img_show.js' %}"></script>
+    <script>
+                function f_submit() {
+
+                    formData.append("beginning", $("#id_beginning").val());
+                    formData.append("destination", $("#id_destination").val());
+                    formData.append("begin_time", $("#id_begin_time").val());
+                    formData.append("isfee", $("#id_isfee").val());
+                    var list = $("#id_tag").val()
+
+                    for(i=0;i<list.length-1;i++){
+
+                        formData.append("tag",list[i]);
+                    };
+                    if({{ id }} != '0'){
+                        formData.append("seat", $("#id_seat").val());
+                    };
+
+                    formData.append("detail", $("#id_detail").val());
+                    formData.append("contact", $("#id_contact").val());
+                    formData.append("tel", $("#id_tel").val());
+
+
+                    $.ajax({
+                        url: '{% url "wechat:carpool" id %}',
+                        type: 'POST',
+                        data: formData,
+                        {#dataType: 'JSON',#}
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success : function(e) {
+                            if(e=='1'){
+
+                                window.location.replace("{% url 'wechat:success' %}")
+                            }
+                        },
+                    });
+
+                };
+    </script>
+
+{% endblock %}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+	<title>lianxi </title>
+	<style type="text/css">
+    </style>
+</head>
+<body>
+    <form>
+		名字：<input type="text " name = 'username' id = 'username'/>
+		上传：<input type="file" name = 'fileimage' id = 'fileimage' />
+	</form>
+	<button>button</button>
+	<script>
+		var file = document.querySelector('#fileimage')
+		var username = document.querySelector('#username')
+		var canvas = document.createElement('canvas');
+		var span = document.createElement('span')
+		var formData = new FormData()
+		file.addEventListener('change',function() {
+			//实现的原理的new formData()然后把这个formData 用ajax传进去
+			span.innerHTML = '预览图加载中...'
+			document.body.appendChild(span)
+			console.log(file.files[0])
+			username.value ? formData.append('username',username.value) : null;
+			resize(file.files[0]);
+		})
+		//上传前的图片压缩
+		function resize(file) {
+			var reader = new FileReader()
+			reader.readAsDataURL(file)
+			var img = new Image()
+			reader.onload = function (e) {
+				// this.result就是图片的base64地址信息
+				img.src = this.result;
+			}
+
+			var context = canvas.getContext('2d');
+			var gif = document.createElement('img')
+
+			// base64地址图片加载完毕后
+			img.onload = function () {
+				// 图片原始尺寸
+					//定义画布的大小
+				if (img.width > 300 || img.height > 300) {
+					if (img.width > img.height) {
+						canvas.width = 300
+						canvas.height = img.height / img.width * 300
+					}
+					else {
+						canvas.height = 300
+						canvas.width = img.width / img.height * 300
+					}
+				}
+				//从那里开始截取图片
+				context.drawImage(img, 0, 0, canvas.width, canvas.height)
+				/*第一个参数是创建的img对象；第二个参数是左上角坐标，后面两个是画布区域宽高*/
+				//压缩后的图片base64 url
+                /*canvas.toDataURL(mimeType, qualityArgument),mimeType 默认值是'image/jpeg';
+                 * qualityArgument表示导出的图片质量，只要导出为jpg和webp格式的时候此参数才有效果，默认值是0.92*/
+				//var newUrl = canvas.toDataURL('image/jpeg', 0.92);//base64 格式
+				document.body.removeChild(span)
+				document.querySelector('body').appendChild(canvas)
+			};
+		}
+
+
+		//这是上传的
+		document.querySelector('button').addEventListener('click',function(){
+			canvas.toBlob(function(blob){
+				var xhr = new XMLHttpRequest()
+
+				formData.append('fileimage', blob,'002.webp')
+				xhr.open('POST', '{% url 'wechat:ceshi' %}', true)//默认true 为异步
+				//上传进度
+				xhr.upload.addEventListener('progress',function (e) {
+					console.log('上传进度为：'+ (e.loaded/e.total*100).toFixed(2)+'%')//多次出现
+					// event.total是需要传输的总字节，event.loaded是已经传输的字节
+				})
+				xhr.upload.addEventListener('loadstart', function () {
+					console.log('上传开始')//只出现一次
+				})
+
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4) {
+						if (xhr.status >= 200 && xhr.status <300 || xhr.status == 304) {
+							console.log(JSON.parse(xhr.responseText))//成功后的返回值
+						}
+						else {
+							console.log("Request was unsuccessful: " + xhr.status);
+						}
+					}
+
+				}
+				//xhr.setRequestHeader("Content-type", "multipart/form-data");
+				xhr.send(formData)
+			}, 'image/jpg',0.9)
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{% load staticfiles %}
+<p onclick="com_function(this,{{ data.total.id }})" class="comment">评论</p>
+    <div class="c_content">
+                                            {% for comment in data.comment %}
+                                                <p onclick="reply_function(this,{{ data.total.id }})"><span>{{ comment.belong_user }}</span>：{{ comment.words }}</p>
+                                            {% endfor %}
+                                            {% for reply in data.reply %}
+                                                <p onclick="reply_function(this,{{ data.total.id }})"><span>{{ reply.belong_user }}</span>回复 <span>{{ reply.to_user }}</span>：{{ reply.words }}</p>
+                                            {% endfor %}
+    </div>
+                                            <script src="{% static 'js/jquery.min.js' %}"></script>
+                                            <script src="{% static 'js/layer.js' %}"></script>
+                                            <script>
+                                                    function com_function(the,total_id) {
+            var index = layer.open({
+                type:1,
+                title:'随便说点啥：',
+                content:"<input type='text' id = 'com' placeholder = '请输入文字' style = 'display:block;margin:0px 10px; height:40px;font-size:13px;'>",
+                btn:['确定','取消'],
+                yes:function (index,layero) {
+                    words = $('#com').val();
+                    $.ajax({
+                        url:"{% url 'wechat:comment' %}",
+                        type:"POST",
+                        data:{"total_id":total_id,"words":words},
+                        success:function (e) {
+                            if(e=="1"){
+                                parent.location.reload();
+                                layer.msg("good");
+                            }else {
+                                layer.msg("error")
+                            }
+                        },
+                    });
+                },
+            });
+        }
+                                                    function reply_function(the,total_id) {
+            var to_user = $(the).children("span").eq(0).text();
+
+            var cc = layer.open({
+                type:1,
+                title:'回复'+to_user,
+                content:'<input type = "text" id = "reply" placeholder = "请输入内容" style = "display:block;margin:0px 10px; height:40px;font-size:13px;">',
+                btn:["确定","取消"],
+                yes:function (cc,layero) {
+                    words = $('#reply').val();
+                    $.ajax({
+                        url:"{% url 'wechat:reply' %}",
+                        type:"POST",
+                        data:{"total_id":total_id,"words":words,"to_user":to_user},
+                        success:function (e) {
+                            if(e=="1"){
+                                parent.location.reload();
+                                layer.msg("good");
+                            }else {
+                                layer.msg("error")
+                            }
+                        },
+                    });
+                },
+
+
+
+
+            })
+
+        }
+                                             </script>

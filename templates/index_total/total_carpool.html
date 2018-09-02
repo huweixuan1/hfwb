@@ -1,0 +1,87 @@
+{% load staticfiles %}
+
+                    <li class="on">
+                        <div class="layui-container">
+                             <div class="pet_list_one_info">
+                                 <img src="{{ data.total.car_pool.user.userinfo.headimgurl }}" alt="">
+                                     <span>{{ data.total.car_pool.user.first_name }}</span>
+                                     <span>置顶</span>
+
+
+
+                                 <a href="/wechat/detail?id={{ data.total.id }}&img={{ data.total.car_pool.user.userinfo.headimgurl }}&name={{ data.total.car_pool.user.first_name }}&title={{ data.total.car_pool.detail }}">详情 </a>
+
+
+
+
+
+                                    </div>
+
+
+                                    <div class="l_content" >
+                                        <div class="text lala" >
+                                            <p class="c_text l_p" >
+
+                                                    {% if data.total.car_pool.type == '0' %}
+                                                    <span class="type bule_font">人找车</span>
+                                                    {% elif data.total.car_pool.type == '1' %}
+                                                    <span class="type bule_font">车找人</span>
+
+                                                {% endif %}
+
+
+
+
+
+
+                                            </p>
+                                            <p class="l_p">
+                                                <span class="bule_font">出发地:</span><span>{{ data.total.car_pool.beginning }}</span>
+                                            </p>
+                                        <p class="l_p">
+                                                <span class="bule_font">目的地:</span><span>{{ data.total.car_pool.destination }}</span>
+                                            </p>
+                                        <p class="l_p">
+                                                <span class="bule_font">出发时间:</span><span>{{ data.total.car_pool.begin_time }}</span>
+                                            </p>
+                                        <p class="l_p">
+                                                <span class="bule_font">是否收费:</span><span>{{ data.total.car_pool.isfee }}</span>
+                                            </p>
+                                        {% if data.total.car_pool.type == '1'  %}
+                                        <p class="l_p">
+                                                <span class="bule_font">空位:</span><span>{{ data.total.car_pool.seat }}</span>
+                                            </p>
+                                        {% endif %}
+
+                                        <p class="l_p">
+                                                <span class="bule_font">详情:</span><span >{{ data.total.car_pool.detail }}</span>
+                                            </p>
+                                            <p class="l_p">
+                                                <span class="bule_font">联系人:</span><span>{{ data.total.car_pool.contact }}</span>
+                                            </p>
+
+                                        <p class="tel l_p" ><a href="tel:{{ data.total.car_pool.tel }}">拨打电话</a></p>
+                                        </div>
+                                        <p onclick="text1(this)" style="margin: 0px;color:green;">全文</p>
+                                        <script>
+                                            function text1(the) {
+                                                $(the).hide();
+                                                $('.lala').removeClass()
+
+
+                                            }
+                                        </script>
+                                        <p class="l_p">{% for img in data.img %}
+                                                <img src="{% static img %}" class="l_img" alt="" />
+                                            {% empty %}
+                                            {% endfor %}</p>
+
+
+                                        <p class="l_p l_bottom"><span>337浏览， </span><span>4分享， </span><span> {{ data.total.car_pool.created|date:'m-d' }}发布</span></p>
+                                        <div class="com_reply">
+                                            {% include 'index_total/com_reply.html' %}
+                                        </div>
+
+                                    </div>
+</div>
+                                </li>

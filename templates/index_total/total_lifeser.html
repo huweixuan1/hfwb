@@ -1,0 +1,67 @@
+{% load staticfiles %}
+
+                    <li class="">
+                    <div class="layui-container">
+
+                             <div class="pet_list_one_info">
+
+                                     <img src="{{ data.total.life_ser.user.userinfo.headimgurl }}" alt="">
+                                     <span>{{ data.total.life_ser.user.first_name }}</span>
+                                     <span>置顶</span>
+
+
+
+                                 <a href="/wechat/detail?id={{ data.total.id }}&img={{ data.total.life_ser.user.userinfo.headimgurl }}&name={{ data.total.life_ser.user.first_name }}&title={{ data.total.life_ser.detail }}">详情 </a>
+
+                             </div>
+
+
+                                    <div class="l_content" >
+                                        <div class="text lala" >
+                                            <p class="c_text l_p" >
+
+                                                    {% if data.total.life_ser.type == '0' %}
+                                                    <span class="type bule_font">求购</span>
+                                                    {% elif data.total.life_ser.type == '1' %}
+                                                    <span class="type bule_font">求租</span>
+                                                        {% elif data.total.life_ser.type == '2' %}
+                                                    <span class="type bule_font">出租</span>
+                                                        {% elif data.total.life_ser.type == '3' %}
+                                                    <span class="type bule_font">出售</span>
+                                                {% endif %}
+
+
+
+
+
+                                                <span >{{ data.total.life_ser.detail }}</span>
+                                            </p>
+                                            <p class="l_p">
+                                                <span class="bule_font">联系人:</span><span>{{ data.total.life_ser.contact }}</span>
+                                            </p>
+
+                                        <p class="tel l_p" ><a href="tel:{{ data.total.life_ser.tel }}">拨打电话</a></p>
+                                        </div>
+                                        <p onclick="text1(this)" style="margin: 0px;color:green;">全文</p>
+                                        <script>
+                                            function text1(the) {
+                                                $(the).hide();
+                                                $('.lala').removeClass()
+
+
+                                            }
+                                        </script>
+                                        <p class="l_p">{% for img in data.img %}
+                                                <img src="{% static img %}" class="l_img" alt="" />
+                                            {% empty %}
+                                            {% endfor %}</p>
+
+
+                                        <p class="l_p l_bottom"><span>337浏览， </span><span>4分享， </span><span> {{ data.total.life_ser.created|date:'m-d' }}发布</span></p>
+                                        <div class="com_reply">
+                                            {% include 'index_total/com_reply.html' %}
+                                        </div>
+
+                                    </div>
+</div>
+                                </li>

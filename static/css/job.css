@@ -1,0 +1,7 @@
+p{margin: 0px;}
+.sub_form_same{margin: 20px 0px;background-color: white;height:80px;}
+.sub_form_same p{width: 100%; margin: 1px 0px;height: 35px;line-height: 35px;padding-left: 20px;}
+input{border: none;padding-left: 20px;}
+.submit{background: #02BF7D;color: white;margin: 15px 10%;height: 40px;width: 80%;border-radius: 4px;}
+.load_img{height:120px;}
+.tag{margin-top: 1px;background: white;height: 80px;}
