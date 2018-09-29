@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from wechat.config import *
 from wechat.functions import *
@@ -21,24 +21,16 @@ def job(request,id):
     if request.method == "POST":
 
         job_info_form = JobInfoForm(request.POST)
-        img = ''
-        for key in request.FILES:
-            file = request.FILES.get(key)
-            file_path = os.path.join('static/img/', file.name)
 
-            img = img+'img/'+file.name+'**'
-            with open(file_path, 'wb') as f:
-                for chunk in file.chunks():
-                    f.write(chunk)
         if job_info_form.is_valid():
             new_jobinfo = job_info_form.save(commit=False)
             new_jobinfo.type = id
             new_jobinfo.user = request.user
-            new_jobinfo.img = img
+
             new_jobinfo.save()
 
             Total.objects.create(job=new_jobinfo)
-            return HttpResponse("1")
+            return redirect('home')
         else:
             return HttpResponse("2")
 
@@ -66,26 +58,17 @@ def job(request,id):
 @csrf_exempt
 def house_base(request,id):
     if request.method == "POST":
-        print(request.POST)
-        print(request.FILES)
-        house_trade_form = House_TradeForm(request.POST)
-        img = ''
-        for key in request.FILES:
-            file = request.FILES.get(key)
-            file_path = os.path.join('static/img/', file.name)
 
-            img = img+'img/'+file.name+'**'
-            with open(file_path, 'wb') as f:
-                for chunk in file.chunks():
-                    f.write(chunk)
+        house_trade_form = House_TradeForm(request.POST)
+
         if house_trade_form.is_valid():
             new_house_trade = house_trade_form.save(commit=False)
             new_house_trade.type = id
             new_house_trade.user = request.user
-            new_house_trade.img = img
+
             new_house_trade.save()
             Total.objects.create(house=new_house_trade)
-            return HttpResponse("1")
+            return redirect('home')
         else:
             return HttpResponse("2")
 
@@ -111,26 +94,18 @@ def house_base(request,id):
 @csrf_exempt
 def carpool(request,id):
     if request.method =="POST":
-        print(request.POST)
-        print(request.FILES)
-        car_pool_form = CarPoolForm(request.POST)
-        img = ''
-        for key in request.FILES:
-            file = request.FILES.get(key)
-            file_path = os.path.join('static/img/', file.name)
 
-            img = img+'img/'+file.name+'**'
-            with open(file_path, 'wb') as f:
-                for chunk in file.chunks():
-                    f.write(chunk)
+        car_pool_form = CarPoolForm(request.POST)
+
+
         if car_pool_form.is_valid():
             new_car_pool = car_pool_form.save(commit=False)
             new_car_pool.type = id
             new_car_pool.user = request.user
-            new_car_pool.img = img
+
             new_car_pool.save()
             Total.objects.create(car_pool=new_car_pool)
-            return HttpResponse("1")
+            return redirect('home')
         else:
             return HttpResponse("2")
     else:
@@ -139,7 +114,7 @@ def carpool(request,id):
         else:
             name = '车找人'
         car_pool_form = CarPoolForm(initial=({"type":id}))
-        print(car_pool_form.as_p())
+
         return render(request,"wechat/carpool.html",{"car_pool_form":car_pool_form,'name':name,'id':id})
 
 @login_required(login_url=CREATE_MENU_URL)
@@ -147,28 +122,20 @@ def carpool(request,id):
 def oldcar(request):
     if request.method == "POST":
         old_car_form = OldCarForm(request.POST)
-        img = ''
-        for key in request.FILES:
-            file = request.FILES.get(key)
-            file_path = os.path.join('static/img/', file.name)
 
-            img = img+'img/'+file.name+'**'
-            with open(file_path, 'wb') as f:
-                for chunk in file.chunks():
-                    f.write(chunk)
         if old_car_form.is_valid():
             new_old_car = old_car_form.save(commit=False)
             new_old_car.user =request.user
-            new_old_car.img = img
+
             new_old_car.save()
             Total.objects.create(old_car=new_old_car)
-            return HttpResponse("1")
+            return redirect('home')
         else:
             return HttpResponse("2")
 
     else:
         old_car_form = OldCarForm()
-        print(old_car_form.as_p())
+
         return render(request,"wechat/oldcar.html",{"old_car_form":old_car_form})
 
 @login_required(login_url=CREATE_MENU_URL)
@@ -176,22 +143,15 @@ def oldcar(request):
 def olditem(request):
     if request.method == "POST":
         old_item_form = OldItemForm(request.POST)
-        img = ''
-        for key in request.FILES:
-            file = request.FILES.get(key)
-            file_path = os.path.join('static/img/', file.name)
 
-            img = img+'img/'+file.name+'**'
-            with open(file_path, 'wb') as f:
-                for chunk in file.chunks():
-                    f.write(chunk)
+
         if old_item_form.is_valid():
             new_item = old_item_form.save(commit=False)
             new_item.user = request.user
-            new_item.img = img
+
             new_item.save()
             Total.objects.create(old_item=new_item)
-            return HttpResponse("1")
+            return redirect('home')
         else:
             return HttpResponse("2")
 
@@ -205,22 +165,15 @@ def olditem(request):
 def emergencyhelp(request):
     if request.method == "POST":
         emer_help_form = EmergencyHelpForm(request.POST)
-        img = ''
-        for key in request.FILES:
-            file = request.FILES.get(key)
-            file_path = os.path.join('static/img/', file.name)
 
-            img = img+'img/'+file.name+'**'
-            with open(file_path, 'wb') as f:
-                for chunk in file.chunks():
-                    f.write(chunk)
+
         if emer_help_form.is_valid():
             new_help = emer_help_form.save(commit=False)
             new_help.user = request.user
-            new_help.img = img
+
             new_help.save()
             Total.objects.create(eme_help=new_help)
-            return HttpResponse("1")
+            return redirect('home')
         else:
             return HttpResponse("2")
     else:
@@ -233,30 +186,21 @@ def emergencyhelp(request):
 def lookforhelp(request):
     if request.method == "POST":
         look_help_form = LookForHelpForm(request.POST)
-        img = ''
 
-
-        for key in request.FILES:
-            file = request.FILES.get(key)
-            file_path = os.path.join('static/img/', file.name)
-
-            img = img+'img/'+file.name+'**'
-            with open(file_path, 'wb') as f:
-                for chunk in file.chunks():
-                    f.write(chunk)
         if look_help_form.is_valid():
             new_help = look_help_form.save(commit=False)
             new_help.user = request.user
-            new_help.img = img
+
             new_help.save()
             Total.objects.create(look_help=new_help)
-            return HttpResponse("1")
+            return redirect('home')
 
         else:
             return HttpResponse("2")
 
     else:
         look_help_form = LookForHelpForm()
+
 
 
         return render(request,"wechat/lookforhelp.html",{"look_help_form":look_help_form})
@@ -269,23 +213,15 @@ def lifeservice(request,id):
     if request.method =="POST":
 
         life_service_form = LifeServiceForm(request.POST)
-        img = ''
-        for key in request.FILES:
-            file = request.FILES.get(key)
-            file_path = os.path.join('static/img/', file.name)
 
-            img = img+'img/'+file.name+'**'
-            with open(file_path, 'wb') as f:
-                for chunk in file.chunks():
-                    f.write(chunk)
         if life_service_form.is_valid():
             new_lifeservice = life_service_form.save(commit=False)
             new_lifeservice.type = id
             new_lifeservice.user = request.user
-            new_lifeservice.img = img
+
             new_lifeservice.save()
             Total.objects.create(life_ser=new_lifeservice)
-            return HttpResponse("1")
+            return redirect('home')
         else:
             return HttpResponse("2")
 
@@ -312,14 +248,14 @@ def lifeservice(request,id):
 @csrf_exempt
 def comment(request):
     if request.method == "POST":
-        print(request.POST)
+
         try:
             total_id = request.POST['total_id']
             words = request.POST['words']
             total = Total.objects.get(id=total_id)
-            print(total,words)
+
             Comments.objects.create(belong_article=total,belong_user=request.user,words=words)
-            return HttpResponse("1")
+            return HttpResponse('1')
         except:
             return HttpResponse("2")
 
@@ -329,7 +265,7 @@ def comment(request):
 @csrf_exempt
 def reply(request):
     if request.method == "POST":
-        print(request.POST)
+
         try:
             total_id = request.POST['total_id']
             words = request.POST['words']
@@ -337,7 +273,7 @@ def reply(request):
             total = Total.objects.get(id=total_id)
 
             Reply.objects.create(belong_article=total,belong_user=request.user,to_user=to_user,words=words)
-            return HttpResponse("1")
+            return HttpResponse('1')
 
         except:
             return HttpResponse("2")
@@ -357,7 +293,7 @@ def detail(request):
     reply = total.reply.all()
     try:
 
-        img = total.img.split("**")[0:-1]
+        img = total.img.split("**")[1:]
     except:
         img = []
 
@@ -438,12 +374,11 @@ def myself(request):
 @csrf_exempt
 def ceshi(request):
     if request.method == "POST":
-        print(request.FILES)
+
         for key in request.FILES:
             file = request.FILES.get(key)
             file_path = os.path.join('static/img/', file.name)
-            print(file_path)
-            print('111111111111111111111111111')
+
             with open(file_path, 'wb') as f:
                 for chunk in file.chunks():
                     f.write(chunk)

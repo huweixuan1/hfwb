@@ -1,0 +1,107 @@
+html{
+
+width:100%;
+
+overflow-x:hidden;}
+*{margin: 0px;padding: 0px;}
+body{
+
+    background-color: #3D4256;font-size: 0.3rem;width: 100%;color: white;
+}
+.bule_font{color:#02BF7D;}
+.green_font{color: #2E8DED;}
+.header{width: 100%}
+body .b_con{
+    padding: 0.15rem 0.28rem;
+}
+.h_nav{
+    height: 2.7rem;
+
+    border-radius: 0.15rem;
+    overflow: hidden;
+    margin-bottom: 0.2rem;
+}
+.h_search{
+    height: 0.6rem;
+    text-align: center;
+    background-color: #171D3D;
+    border: 2px solid #f0f0f0;
+    border-radius: 0.6rem;
+    margin-bottom: 0.2rem;
+    position: relative;
+}
+.h_search input{
+    margin-top: 2px;
+    height: 0.57rem;
+    line-height: 0.58rem;
+    background-color:#171D3D ;
+    border: none;
+    color: white;
+}
+.h_search i{
+    color: white;
+    float: right;
+    font-size: 0.44rem;
+    position: absolute;
+    right: 0.25rem;
+    top:0.1rem;
+}
+
+.content > p{
+    color: #EEC683;
+    margin-bottom: 0.2rem;
+    font-size: 0.32rem;
+}
+
+.content ul li{
+    margin-bottom: 0.15rem;
+    height:1.5rem;
+    background: #4D5163;
+    border-radius: 0.1rem;
+    padding: 0.15rem 0.22rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.content ul li div.l_img{
+    height: 1.5rem;
+    width: 1.5rem;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 0.1rem;
+
+
+}
+.content ul li div.l_detail{
+    width: 60%;
+}
+.content ul li div.l_detail p.l_d_1 i{
+    font-size: 0.3rem;
+    color: #E057A0;
+    font-weight: bold;
+}
+.content ul li div.l_img img{
+    height: 100%;
+    width: 100%;
+}
+.name{
+    font-weight: bold;
+    font-size: 0.32rem;
+    color: white;
+}
+.content ul li div p{
+    margin-bottom: 0.13rem;
+    color: #ccc;
+}
+.content ul li div.l_a a i{
+   font-size: 0.4rem;
+    font-weight: bold;
+    color: #7A7D8B;
+}
+.margin{
+    height:2rem;
+}
+
+

@@ -1,6 +1,6 @@
 WEIXIN_TOKEN = 'hu1234'
 WEIXIN_APPID = 'wxa02ecc82e50aff15'
-WEIXIN_APPSECRET = '701325a877263198fafbb3cedd8e338f'
+WEIXIN_APPSECRET = '0648e61ae9b395c324c1fdd0e838d086'
 
 HOME_URL = 'http://www.hfwb.xyz/home/'
 REDIR_URL = 'http://www.hfwb.xyz/userinfo/'

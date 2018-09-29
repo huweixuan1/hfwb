@@ -1,0 +1,97 @@
+/*html*/
+/*{*/
+
+/*width:100%;*/
+
+/*overflow-x:hidden;*/
+/*}*/
+*{margin: 0px;padding: 0px;}
+body{
+
+    background-color: #F8F8F8;
+    font-size: 0.3rem;!important;
+    width: 100%;
+}
+.bule_font{color:#02BF7D;}
+.green_font{color: #2E8DED;}
+.header{width: 100%;background-color: white;}
+
+.title{
+    padding: 0.3rem;
+    border-bottom: 1px solid #ccc;
+
+}
+.title .t_time{
+    margin-top: 0.2rem;
+
+    color: #666;
+}
+.list{
+    width: 100%;background-color: white;
+
+
+
+}
+.list ul{
+    margin-bottom: 0.3rem;
+}
+.list ul li{
+    border-bottom: 1px solid #ccc;
+    padding: 0.3rem 0.2rem;
+
+}
+.list ul li i{
+    font-size: 0.45rem;
+    color: #02BF7D;
+    margin-right: 0.2rem;
+}
+.list ul li img{
+    height: 0.55rem;
+    width: 0.55rem;
+    margin-right: 0.2rem;
+}
+.detail{
+    background-color: white;
+    padding: 0.3rem 0.2rem;
+}
+.detail .d_con img{
+    width: 100%;
+}
+
+.foot{
+
+    height:140px;
+    line-height: 140px;
+    text-align: center;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    position: fixed;
+    bottom: 0;
+    left:0;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+.foot > div{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+.foot > div > div{
+    flex: 1;
+}
+.foot .f_left{
+    color: #666;
+
+}
+.foot .f_left i{
+    display: inline-block;
+    font-size: 0.33rem;
+}
+.foot .f_right{color: white;}
+.foot .f_right .r_mes{
+    background-color: #02BF7D;
+}
+.foot .f_right .r_phone{
+    background-color: #FF6666;
+}

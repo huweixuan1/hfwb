@@ -172,16 +172,16 @@
             <div class="c_meslist">
                 <div class="c_m_nav">
                     <ul class="layui-nav layui-bg-blue "  lay-filter="">
-                              <li class="layui-nav-item layui-this" onclick="fun_ajax(this)" att="0"><a href="javascript:">最新发布</a> </li>
-                              <li class="layui-nav-item " onclick="fun_ajax(this)" att="1"><a href="javascript:">求职招聘</a></li>
-                              <li class="layui-nav-item" onclick="fun_ajax(this)" att="2"><a href="javascript:">顺风拼车</a></li>
+                              <li class="layui-nav-item layui-this" onclick="fun_ajax(this)" att="0"><a href="javascript:">最新</a> </li>
+                              <li class="layui-nav-item " onclick="fun_ajax(this)" att="1"><a href="javascript:">求职</a></li>
+                              <li class="layui-nav-item" onclick="fun_ajax(this)" att="2"><a href="javascript:">拼车</a></li>
                               <li class="layui-nav-item" onclick="fun_ajax(this)" att="3">
-                                <a href="javascript:">二手市场</a>
+                                <a href="javascript:">二手</a>
                               </li>
-                              <li class="layui-nav-item" onclick="fun_ajax(this)" att="4"> <a href="javascript:">房屋租售</a></li>
-                                <li class="layui-nav-item" onclick="fun_ajax(this)" att="5"><a href="javascript:">生活服务</a></li>
-                                <li class="layui-nav-item" onclick="fun_ajax(this)" att="6"><a href="javascript:">紧急求助</a></li>
-                                <li class="layui-nav-item" onclick="fun_ajax(this)" att="7"><a href="javascript:">寻人寻物</a></li>
+                              <li class="layui-nav-item" onclick="fun_ajax(this)" att="4"> <a href="javascript:">房屋</a></li>
+                                <li class="layui-nav-item" onclick="fun_ajax(this)" att="5"><a href="javascript:">服务</a></li>
+                                <li class="layui-nav-item" onclick="fun_ajax(this)" att="6"><a href="javascript:">求助</a></li>
+                                <li class="layui-nav-item" onclick="fun_ajax(this)" att="7"><a href="javascript:">寻物</a></li>
                             </ul>
                 </div>
                 <div class="c_m_cont">
@@ -286,27 +286,7 @@ layui.use('element', function(){
 
   //…
 });
-layui.use('flow', function(){
-  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
-  var flow = layui.flow;
-  flow.load({
-    elem: '#demo' //指定列表容器
-    ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
-      var lis = [];
-      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
-      $.get('/api/list?page='+page, function(res){
-        //假设你的列表返回在data集合中
-        layui.each(res.data, function(index, item){
-          lis.push('<li>'+ item.title +'</li>');
-        });
 
-        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
-        //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
-        next(lis.join(''), page < res.pages);
-      });
-    }
-  });
-});
 
 function fun_ajax(the) {
     var id = $(the).attr('att');

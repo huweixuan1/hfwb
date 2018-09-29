@@ -1,0 +1,210 @@
+{% extends 'wechat/basecre.html' %}
+{% load staticfiles %}
+{% block title %}
+
+商家入驻
+{% endblock %}
+{% block top_name %}
+商家入驻
+{% endblock %}
+{% block detail %}
+    <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+            <div class="sub_form">
+
+
+                <p><label for="id_name">商家名称:</label> <input type="text" name="name" maxlength="20" id="id_name" /></p>
+                <p><label for="id_address">详细地址:</label> <input type="text" name="address" maxlength="100" id="id_address" /></p>
+                <p><label for="id_tel">联系电话:</label> <input type="text" name="tel" maxlength="25" id="id_tel" /></p>
+                <p><label for="id_industry">所属行业:</label> <select name="industry" required id="id_industry">
+                  <option value="" selected>---------</option>
+
+                  <option value="1">婚纱摄影</option>
+
+                  <option value="2">教育培训</option>
+
+                  <option value="3">家居建材</option>
+
+                  <option value="4">房产楼盘</option>
+
+                  <option value="5">商务服务</option>
+
+                  <option value="6">美食餐饮</option>
+
+                  <option value="7">休闲娱乐</option>
+
+                  <option value="8">其他</option>
+
+                  <option value="9">生活服务</option>
+
+                  <option value="10">酒店旅游</option>
+
+                  <option value="11">美容美发</option>
+
+                </select></p>
+                <p><label for="id_opentime">营业时间:</label> <input type="text" name="opentime" maxlength="50" id="id_opentime" /></p>
+                <p><label for="id_detail">商家信息:</label> <textarea name="detail" cols="40" rows="10" required id="id_detail" placeholder="请填写商家信息"></textarea></p>
+                <p style="display: none"><label for="id_logoimg">Logoimg:</label> <input type="text" name="logoimg" maxlength="100" id="id_logoimg" /></p>
+                <p>商家图片</p>
+                <div class="img_form">
+                    商家LOGO
+                    <div class="uploadImgBtn">
+                        <img src="{% static 'img/plus.png' %}" alt="" style="width: 100px;height: 100px;"class="logo_img">
+                        <input type="file" id="l_img" class="uploadImg" name="logo_img">
+                    </div>
+                </div>
+
+
+
+                <p style="display: none"><label for="id_wximg">Wximg:</label> <input type="text" name="wximg" maxlength="100" id="id_wximg" /></p>
+                <div class="img_form">
+                    客服微信二维码
+                    <div class="uploadImgBtn">
+                        <img src="{% static 'img/plus.png' %}" alt="" style="width: 100px;height: 100px;"class="wx_img">
+                        <input type="file" id="w_img" class="uploadImg" name="logo_img">
+                    </div>
+                </div>
+
+
+                <p style="display: none"><label for="id_busimg">Busimg:</label> <input type="text" name="busimg" maxlength="250" id="id_busimg" /></p>
+                <ul id="img_box">
+                    商家相册
+                    <li id="form1">
+                        <div class="uploadImgBtn" id="uploadImgBtn">
+                            <img src="{% static 'img/plus.png' %}" style="width: 100px;height: 100px;"class="bus_img">
+                            <input type="file" id="busimg1" class="uploadImg" name="bus_img">
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        <div class="sub_form_same">
+                        <input class="submit" type="submit" value="确认发布" onclick="f_submit()">
+        </div>
+    </form>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <script>
+        var count=1;
+        $(document).ready(function () {
+            $("#l_img").on("change",upload1);
+            $("#w_img").on("change",upload2);
+
+            $("#busimg1").on("change",upload3);
+
+        })
+
+        function upload1() {
+            var csrf = $("input[name='csrfmiddlewaretoken']").val();
+            var formData=new FormData();
+            formData.append("csrfmiddlewaretoken",csrf);
+            formData.append('avatar', $("#l_img")[0].files[0]);  /*获取上传的图片对象*/
+            $.ajax({
+                url: '{% url "busness:post_img" %}',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (args) {
+
+                    console.log(args);  /*服务器端的图片地址*/
+                    $(".logo_img").attr('src','/'+args);  /*预览图片*/
+                    $("#id_logoimg").val('/'+args);  /*将服务端的图片url赋值给form表单的隐藏input标签*/
+             }
+              })
+
+
+
+
+        };
+        function upload2() {
+            var csrf = $("input[name='csrfmiddlewaretoken']").val();
+            var formData=new FormData();
+            formData.append("csrfmiddlewaretoken",csrf);
+            formData.append('avatar', $("#w_img")[0].files[0]);  /*获取上传的图片对象*/
+            $.ajax({
+                url: '{% url "busness:post_img" %}',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (args) {
+
+                    console.log(args);  /*服务器端的图片地址*/
+                    $(".wx_img").attr('src','/'+args);  /*预览图片*/
+                    $("#id_wximg").val('/'+args);  /*将服务端的图片url赋值给form表单的隐藏input标签*/
+             }
+              })
+
+
+
+
+        };
+
+        function upload3() {
+
+            var self = this;
+
+            var num = this.getAttribute("id").replace(/[a-zA-Z]/g,"");
+            console.log(num);
+
+            var $busimg = "#busimg"+num;
+
+            var csrf = $("input[name='csrfmiddlewaretoken']").val();
+            var formData=new FormData();
+            formData.append("csrfmiddlewaretoken",csrf);
+            formData.append('avatar', $($busimg)[0].files[0]);  /*获取上传的图片对象*/
+            var value = $("#id_busimg").val();
+            console.log(value);
+            $.ajax({
+                url: '{% url "busness:post_img" %}',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (args) {
+
+                    console.log(args);  /*服务器端的图片地址*/
+                    $(self).parent().children().attr('src','/'+args);  /*预览图片*/
+                    $("#id_busimg").val(value+'**'+'/'+args);  /*将服务端的图片url赋值给form表单的隐藏input标签*/
+
+
+
+                    if(count == num&&count<4 ){
+
+                    //count计数加1
+                    count +=1;
+                    var str = '<li id="form'+count+'">'+
+                        '<div class="uploadImgBtn" >'+
+                        '<img src="{% static 'img/plus.png' %}" style="width: 100px;height: 100px;"class="wx_img">'+
+                        '<input class="uploadImg" type="file" name="file" id="busimg'+count+'">'+
+                        '</div>'+
+                        '</li> ';
+
+
+                    console.log(str);
+                    $("#img_box").append(str);
+                    //构造input的选择器
+                    var $sel = "#busimg"+count;
+                    //为新生成的input绑定change事件
+                    $($sel).on("change", upload3 );
+
+                }else{
+                    //如果不等于
+                    return false;
+                }
+            }
+            })
+
+
+
+
+        };
+
+
+
+    </script>
+
+{% endblock %}

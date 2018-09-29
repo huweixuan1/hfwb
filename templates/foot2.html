@@ -7,8 +7,8 @@
                     </p>主页
                 </a>
             </li>
-            <li><a href="#"><p><i class="layui-icon layui-icon-templeate-1" ></i></p> 商圈</a></li>
+            <li><a href="{% url 'busness:showbusness' %}"><p><i class="layui-icon layui-icon-templeate-1" ></i></p> 商圈</a></li>
             <li class="bule_font" ><a href="{% url 'create' %}" style="color:  #02BF7D"><p><i class="layui-icon layui-icon-find-fill" ></i></p>  发布</a></li>
-            <li><a href="#"><p><i class="layui-icon layui-icon-note" ></i></p>  名片</a></li>
+            <li><a href="{% url 'card:cardlist' %}"><p><i class="layui-icon layui-icon-note" ></i></p>  名片</a></li>
             <li><a href="{% url 'wechat:myself' %}"><p><i class="layui-icon layui-icon-user" ></i></p>  我的</a></li>
         </ul>

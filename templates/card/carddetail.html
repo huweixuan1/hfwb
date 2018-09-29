@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/card/carddetail.css' %}">
+    <title>{{ card.name }}</title>
+</head>
+<body>
+<script src="{% static 'js/zishiying.js' %}"></script>
+    <div class="card_detail">
+        <div class="d_bass">
+            <div class="d_img">
+                <img src="{{ card.user.userinfo.headimgurl }}" alt="">
+            </div>
+            <div class="d_detail">
+                <p class="l_d_1">
+                    <span class="name">{{ card.name }}</span>
+                    <i class="layui-icon layui-icon-female" ></i>
+                             &nbsp;{{ card.tag }}
+                </p>
+                <p>
+                    {{ card.detail }}
+                </p>
+            </div>
+        </div>
+        <div class="d_more">
+            <p>
+                电话：{{ card.tel }}
+            </p>
+            <p>
+                wx：{{ card.wechatname }}
+            </p>
+            <p>
+                地址：{{ card.position }}
+            </p>
+        </div>
+        <div class="vx_img">
+            <img src="{{ card.wechatimg.url }}" alt="">
+        </div>
+
+    </div>
+
+
+</body>
+</html>

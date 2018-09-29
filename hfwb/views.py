@@ -78,9 +78,10 @@ def home(request):
         reply = total.reply.all()
         try:
 
-            img = total.img.split("**")[0:-1]
+            img = total.img.split("**")[1:]
         except:
             img = []
+
 
         json1 = {'total':total,'comment':comment,'reply':reply,'img':img}
         datas.append(json1)
@@ -102,25 +103,25 @@ def userinfo(request):
 
     if code == '':
         return HttpResponse('非法访问...')
-    print('1')
+
     access_token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+WEIXIN_APPID+'&secret='+WEIXIN_APPSECRET+'&code='+code+'&grant_type=authorization_code'
     resp,data = my_get(access_token_url)
-    print('2')
+
     # print(parse_Json2Dict(data))
     ACCESS_TOKEN = parse_Json2Dict(data)['access_token']
     OPENID = parse_Json2Dict(data)['openid']
     userinfo_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='+ACCESS_TOKEN+'&openid='+OPENID+'&lang=zh_CN'
     resp2,data2 = my_get(userinfo_url)
-    print('3')
+
     # print(parse_Json2Dict(data2))
     userinfo = parse_Json2Dict(data2)
-    print(userinfo)
+
     try:
-        print('4')
+
         User.objects.get(username=userinfo['openid'])
         us = authenticate(username=userinfo['openid'], password="123456789")
     except:
-        print('5')
+
         User.objects.create_user(username=userinfo['openid'],password="123456789",first_name=userinfo['nickname'])
         user = User.objects.get(username=userinfo['openid'])
         UserInfo.objects.create(user=user,openid=userinfo['openid'],sex=userinfo['sex'],city=userinfo['city'],province=userinfo['province'],headimgurl=userinfo['headimgurl'])

@@ -1,4 +1,5 @@
 p{margin: 0px;padding: 0px;}
+p a{color: white;!important;}
 .clearfix:after{display: block;clear: both;content:''}
 .topline ul{background-color: #02BF7D;height:40px;color: white;line-height: 40px;display: flex;}
 .topline ul li{width: 33.33333%;text-align: center;}
@@ -33,11 +34,11 @@ div.pre-item {
                     width: 60px;
                     padding: 10px 0;
                 }
-                .pre-item {
+.pre-item {
                     cursor: pointer;
                     position: relative;
                 }
-                .pre-item:hover::after {
+.pre-item:hover::after {
                     content: '点击删除';
                     padding: 10px 0px;
                     border-radius: 5px;
@@ -52,3 +53,35 @@ div.pre-item {
                     color: #FFF;
                     transform: translate(-50%, -50%);
                 }
+
+.uploadImgBtn {
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+        position: relative;
+
+    }
+
+    .uploadImgBtn .uploadImg {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+    #img_box{
+        height: 100px;
+    }
+    #img_box div{
+
+        margin-right: 10px;
+        float:left;
+    }
+
+
+
+
+
+

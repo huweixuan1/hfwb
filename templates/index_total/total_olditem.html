@@ -57,9 +57,10 @@
 
                                             }
                                         </script>
-                                        <p class="l_p">{% for img in data.img %}
+                                        <p class="l_p">
+                                            {% for img in data.img %}
 
-                                                <img src="{% static img %}" class="l_img" alt="" />
+                                                <img src="{{ img }}" class="l_img" alt="" />
                                             {% empty %}
                                             {% endfor %}</p>
 

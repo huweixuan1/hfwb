@@ -1,0 +1,49 @@
+{% extends 'wechat/basecre.html' %}
+{% load staticfiles %}
+{% block title %}
+
+发布个人名片
+{% endblock %}
+{% block top_name %}
+发布个人名片
+{% endblock %}
+{% block detail %}
+    <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+            <div class="sub_form">
+                <p><label for="id_name">姓名:</label> <input type="text" name="name" maxlength="20" id="id_name" /></p>
+                <p><label for="id_sex">性别:</label> <input type="text" name="sex" maxlength="10" id="id_sex" /></p>
+                <p><label for="id_tel">电话:</label> <input type="text" name="tel" maxlength="30" id="id_tel" /></p>
+
+                <p><label for="id_tag">职务/技能:</label> <input type="text" name="tag" maxlength="30" id="id_tag" /></p>
+
+
+                
+                <p><label for="id_wechatname">微信号:</label> <input type="text" name="wechatname" maxlength="30" id="id_wechatname" /></p>
+
+
+                <p><label for="id_img" >上传微信二维码</label> <a href="javascript:;" class="file" >选择图片<input type="file" name="wechatimg" required id="id_img" /></a></p>
+                <div class="file-list-dom"></div>
+                <p><textarea name="detail" cols="40" rows="10" id="id_detail" placeholder="更过的介绍"></textarea></p>
+                <p><label for="id_position">地址:</label> <input type="text" name="position" maxlength="100" id="id_position" /></p>
+
+
+
+
+
+
+
+
+                <div class="sub_form_same">
+                        <input class="submit" type="submit" value="确认发布" onclick="f_submit()">
+                </div>
+            </div>
+        </form>
+
+
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/img_show.js' %}"></script>
+
+
+{% endblock %}

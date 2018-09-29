@@ -1,0 +1,180 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>同城商家</title>
+    <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/busness/showbusness.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ouxinlixue/foot.css' %}">
+
+</head>
+<body>
+<script src="{% static 'js/zishiying.js' %}"></script>
+
+    <div class="header">
+        <div class="banner">
+
+            <div class="layui-carousel b_con"  >
+                      <div carousel-item>
+                        <div style=""><img src="{% static 'img/nav.png' %}" style="width: 100%;height: 100%;" alt=""></div>
+                        <div style=""><img src="{% static 'img/nav.png' %}" style="width: 100%;height: 100%;" alt=""></div>
+
+                      </div>
+            </div>
+
+        </div>
+
+        <div class="data">
+            <span>曝光量：</span>
+            <span class="bule_font">772.5万次</span>
+            <span>已入驻：</span>
+            <span class="bule_font">10家</span>
+
+        </div>
+
+        <div class="nav">
+
+            <div class="layui-carousel nav_nav"  >
+                      <div carousel-item>
+                        <div style="" class="white">
+                            <ul>
+                                <li>
+                                    <img src="{% static 'img/bus/1.png' %}" alt="">
+                                    <p>婚纱摄影</p>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/bus/2.png' %}" alt="">
+                                    <p>教育培训</p>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/bus/3.png' %}" alt="">
+                                    <p>家居建材</p>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/bus/4.png' %}" alt="">
+                                    <p>房产楼盘</p>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/bus/5.png' %}" alt="">
+                                    <p>商务服务</p>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/bus/6.png' %}" alt="">
+                                    <p>美食餐饮</p>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/bus/7.png' %}" alt="">
+                                    <p>休闲娱乐</p>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/bus/8.png' %}" alt="">
+                                    <p>其他</p>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/bus/9.png' %}" alt="">
+                                    <p>生活服务</p>
+                                </li>
+                                <li>
+                                    <img src="{% static 'img/bus/10.png' %}" alt="">
+                                    <p>酒店旅游</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="" class="white"></div>
+
+                      </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="active">
+            <span class="bule_font" style="font-weight: bolder">商圈快报</span>
+            <span class="a_right"><a href="{% url 'busness:createbusness' %}" class="bule_font" style="font-weight: bolder">我要入驻</a></span>
+    </div>
+
+    <div class="bus_list">
+
+            <p class="bule_font">
+                热门
+            </p>
+
+        <ul>
+            {% for busness in allbusness %}
+
+                    <li onclick="to_detail(this,{{ busness.id }})">
+
+                        <div class="img">
+                            <img src="{{ busness.logoimg }}" alt="">
+                        </div>
+                        <div class="middle">
+                            <p>{{ busness.name }}</p>
+                            <p style="color: #FF6266;overflow: hidden;text-overflow: ellipsis;height: 0.48rem;white-space: nowrap;"><i class="layui-icon layui-icon-rate-solid " style="font-size: 0.3rem" ></i> {{ busness.detail }}</p>
+                            <p style="color:#B5A67E;"><i class="layui-icon layui-icon-location " style="font-size: 0.3rem" ></i> {{ busness.address }}</p>
+                        </div>
+                        <div class="right">
+                            <a href="tel:{{ busness.tel }}"><i class="layui-icon layui-icon-cellphone bule_font" ></i></a>
+                        </div>
+
+                    </li>
+
+
+            {% endfor %}
+
+
+
+        </ul>
+
+    </div>
+    <div class="height"></div>
+
+    <div class="foot">
+        {% include 'foot5.html' %}
+    </div>
+
+
+
+
+    <script src="{% static 'layui/layui.js' %}"></script>
+    <script>
+
+
+        layui.use('carousel', function(){
+              var carousel = layui.carousel;
+              //建造实例
+              carousel.render({
+                elem: '.b_con',
+                  width: '100%', //设置容器宽度
+                  arrow: 'hover', //始终显示箭头
+                  height:'300px'
+                //,anim: 'updown' //切换动画方式
+              });
+
+            });
+        layui.use('carousel', function(){
+              var carousel = layui.carousel;
+              //建造实例
+              carousel.render({
+                elem: '.nav_nav',
+                  width: '100%', //设置容器宽度
+                  arrow: 'hover', //始终显示箭头
+                  height:'400px',
+                  autoplay:false
+
+                //,anim: 'updown' //切换动画方式
+              });
+
+            });
+
+        function to_detail(the,busness_id) {
+
+            location.href = '/busness/detail?id='+busness_id;
+
+        }
+
+    </script>
+
+
+</body>
+</html>

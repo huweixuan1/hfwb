@@ -26,15 +26,17 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #初始设置，验证token，信息自动回复
     url(r'index/',views.index),
-    url(r'',TemplateView.as_view(template_name='MP_verify_1b5lJAphbOGco59t.txt')),
+    #url(r'',TemplateView.as_view(template_name='MP_verify_1b5lJAphbOGco59t.txt')),
     #创建自定义菜单，点击后可跳转到指定页面
     url(r'create_ms',views.create_ms),
     #主页面
     url(r'home',views.home,name='home'),
-    url(r'create',TemplateView.as_view(template_name="create.html"),name='create'),
+    url(r'^create$',TemplateView.as_view(template_name="create.html"),name='create'),
     #授权微信页面
     url(r'userinfo',views.userinfo),
     url(r'^wechat/',include(('wechat.urls','wechat'),namespace ='wechat')),
+    url(r'^card/',include(('card.urls','card'),namespace ='card')),
+    url(r'^busness/',include(('busness.urls','busness'),namespace ='busness')),
 
 ]
 

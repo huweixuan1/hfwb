@@ -1,0 +1,138 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ busness.name }}</title>
+    <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/busness/detail.css' %}">
+
+</head>
+<body>
+<script src="{% static 'js/zishiying.js' %}"></script>
+
+<div class="header">
+        <div class="banner">
+            <div class="layui-carousel b_con"  >
+                      <div carousel-item>
+                        <div style=""><img src="{{ busness.logoimg }}" style="width: 100%;height: 100%;" alt=""></div>
+                        <div style=""><img src="{{ busness.wximg }}" style="width: 100%;height: 100%;" alt=""></div>
+                          {% for img in busimg %}
+                            <div style=""><img src="{{ img }}" style="width: 100%;height: 100%;" alt=""></div>
+                          {% endfor %}
+                      </div>
+            </div>
+
+
+        </div>
+        <div class="title">
+            <p>{{ busness.name }}</p>
+            <p class="t_time">营业时间：{{ busness.opentime }}</p>
+
+        </div>
+    </div>
+
+<div class="list">
+
+        <ul>
+            <li>
+                <i class="layui-icon layui-icon-form" ></i>
+                钻石商家
+            </li>
+            <li>
+                <i class="layui-icon layui-icon-picture" ></i>
+                <img src="{{ busness.logoimg }}"  alt="">
+                <img src="{{ busness.wximg }}"  alt="">
+                {% for img in busimg %}
+                            <img src="{{ img }}" alt="">
+                {% endfor %}
+
+            </li>
+            <li>
+
+                <a href="tel:{{ busness.tel }}">
+                    <i class="layui-icon layui-icon-cellphone" ></i>
+
+                    {{ busness.tel }}
+                      营业时间：{{ busness.opentime }}
+
+
+                </a>
+            </li>
+            <li>
+                <i class="layui-icon layui-icon-table" ></i>
+                商家微信
+            </li>
+            <li>
+                <i class="layui-icon layui-icon-location" ></i>
+                {{ busness.address }}
+            </li>
+        </ul>
+
+    </div>
+
+<div class="detail">
+
+        <div class="d_con">
+
+            <div><p>{{ busdetail }}</p></div>
+
+            <img src="{{ busness.logoimg }}"  alt="">
+                <img src="{{ busness.wximg }}"  alt="">
+                {% for img in busimg %}
+                            <img src="{{ img }}" alt="">
+                {% endfor %}
+
+        </div>
+
+
+    </div>
+
+
+
+<div class="foot">
+    <div class="f_left">
+        <div class="home">
+            <a href="{% url 'busness:showbusness' %}">
+                <i class="layui-icon layui-icon-home" ></i>
+                商圈
+            </a>
+
+        </div>
+        <div class="home">
+            <a href="{% url 'busness:createbusness' %}">
+                <i class="layui-icon layui-icon-release" ></i>
+            发布
+            </a>
+
+        </div>
+
+    </div>
+    <div class="f_right">
+
+        <div class="r_phone"><a href="tel:{{ busness.tel }}">拨打电话</a></div>
+    </div>
+
+</div>
+
+
+<script src="{% static 'layui/layui.js' %}"></script>
+<script>
+    layui.use('carousel', function(){
+              var carousel = layui.carousel;
+              //建造实例
+              carousel.render({
+                elem: '.b_con',
+                  width: '100%', //设置容器宽度
+                  arrow: 'hover', //始终显示箭头
+                  height:'600px'
+                //,anim: 'updown' //切换动画方式
+              });
+
+            });
+
+
+</script>
+
+</body>
+</html>

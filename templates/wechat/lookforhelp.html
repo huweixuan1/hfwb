@@ -8,61 +8,106 @@
 发布寻人寻物信息
 {% endblock %}
 {% block detail %}
-    <form method="POST" enctype="multipart/form-data" class="form" id="add_news">
+    <form method="POST" enctype="multipart/form-data" class="form" id="add_news" action="">
     {% csrf_token %}
             <div class="sub_form">
 
                 <p><textarea name="detail" cols="40" rows="10" required id="id_detail" placeholder="请输入详细信息"></textarea></p>
-                <p>
-                    <label for="id_img" >上传照片</label>
-                    <a href="javascript:;" class="file" >
-                        选择图片
-                        <input type="file" name="img" id="id_img" />
-                    </a>
 
-                </p>
-                <div class="file-list-dom"></div>
+
 
                 <p><label for="id_contact">联系人:</label> <input type="text" name="contact" maxlength="20" id="id_contact" /></p>
                 <p><label for="id_tel">电话号码:</label> <input type="text" name="tel" maxlength="20" required id="id_tel" /></p>
 
+                {% include 'wechat/img.html' %}
+
+
 
 
             </div>
+            <div class="sub_form_same">
+                        <input class="submit" type="submit" value="确认发布" >
+            </div>
         </form>
-                <div class="sub_form_same">
-                        <input class="submit" type="submit" value="确认发布" onclick="f_submit()">
-                </div>
 
     <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/img_show.js' %}"></script>
+
     <script>
-                function f_submit() {
+        var count=1;
+        $(document).ready(function () {
 
 
-                    formData.append("detail", $("#id_detail").val());
-                    formData.append("contact", $("#id_contact").val());
-                    formData.append("tel", $("#id_tel").val());
+            $("#busimg1").on("change",upload3);
+
+        })
 
 
-                    $.ajax({
-                        url: '{% url "wechat:lookforhelp" %}',
-                        type: 'POST',
-                        data: formData,
-                        {#dataType: 'JSON',#}
-                        cache: false,
-                        processData: false,
-                        contentType: false,
-                        success : function(e) {
-                            if(e=='1'){
 
-                                window.location.replace("{% url 'wechat:success' %}")
-                            }
-                        },
-                    });
+        function upload3() {
 
-                };
+            var self = this;
+
+            var num = this.getAttribute("id").replace(/[a-zA-Z]/g,"");
+
+
+            var $busimg = "#busimg"+num;
+
+            var csrf = $("input[name='csrfmiddlewaretoken']").val();
+            var formData=new FormData();
+            formData.append("csrfmiddlewaretoken",csrf);
+            formData.append('avatar', $($busimg)[0].files[0]);  /*获取上传的图片对象*/
+            var value = $("#id_img").val();
+            console.log(value);
+            $.ajax({
+                url: '{% url "busness:post_img" %}',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (args) {
+
+                    console.log(args);  /*服务器端的图片地址*/
+                    $(self).parent().children().attr('src','/'+args);  /*预览图片*/
+                    $("#id_img").val(value+'**'+'/'+args);  /*将服务端的图片url赋值给form表单的隐藏input标签*/
+
+
+
+                    if(count == num&&count<4 ){
+
+                    //count计数加1
+                    count +=1;
+                    var str = '<li id="form'+count+'">'+
+                        '<div class="uploadImgBtn" >'+
+                        '<img src="{% static 'img/plus.png' %}" style="width: 80px;height: 80px;"class="wx_img">'+
+                        '<input class="uploadImg" type="file" name="file" id="busimg'+count+'">'+
+                        '</div>'+
+                        '</li> ';
+
+
+                    console.log(str);
+                    $("#img_box").append(str);
+                    //构造input的选择器
+                    var $sel = "#busimg"+count;
+                    //为新生成的input绑定change事件
+                    $($sel).on("change", upload3 );
+
+                }else{
+                    //如果不等于
+                    return false;
+                }
+            }
+            })
+
+
+
+
+        };
+
+
+
     </script>
+
+
 
 
 {% endblock %}

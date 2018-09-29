@@ -1,0 +1,116 @@
+html{
+
+width:100%;
+
+overflow-x:hidden;}
+*{margin: 0px;padding: 0px;}
+body{
+
+    background-color: #F8F8F8;font-size: 0.3rem;width: 100%;
+}
+.bule_font{color:#02BF7D;}
+.green_font{color: #2E8DED;}
+.header{width: 100%;background-color: white;}
+
+.data{
+    border-bottom: 1px solid #f0f0f0;
+    padding-left: 2rem;
+    color: #666;
+}
+.data span{
+    line-height: 0.8rem;
+    text-align: center;
+}
+.nav{
+    padding-bottom: 20px;
+}
+.white{
+    background-color: white!important;
+
+}
+.white ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+.white ul li{
+    width: 20%;
+    height: 50%;
+    text-align: center;
+
+
+}
+.white ul li p{
+    text-align: center;
+    color: #666;
+    font-size: 0.24rem;
+}
+.white ul li img{
+    width: 120px;
+    height: 120px;
+    margin: 10px 0px;
+}
+
+.active{
+    background-color: white;
+    line-height: 0.7rem;
+    margin: 0.2rem auto;
+    width: 90%;
+    border-radius: 0.7rem;
+    text-indent: 0.3rem;
+}
+.active .a_right{
+    float: right;
+    margin-right: 0.3rem;
+}
+
+.bus_list{
+    background-color: white;
+
+}
+.bus_list > p{
+    line-height: 0.8rem;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+.bus_list ul li{
+    padding: 0.3rem;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+}
+.bus_list ul li .img{
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 0.1rem;
+    overflow: hidden;
+
+}
+.bus_list ul li .img img{
+    width: 100%;
+    height: 100%;
+}
+.bus_list ul li .middle{
+    margin-left: 0.28rem;
+    width: 60%;
+
+}
+.bus_list ul li .middle p{
+    font-size: 0.28rem;
+    margin: 0.1rem 0rem;
+}
+.bus_list ul li .right i{
+    font-size: 0.6rem;
+
+
+}
+.bus_list ul li .right{
+    padding: 0.2rem 0rem;
+
+}
+.height{
+    height:3rem;
+}
